@@ -66,81 +66,73 @@ def generate_word_collection(file_name):
 if __name__ == '__main__':
     numpy.random.seed(93106)
     
-##    file = "testing.txt"
-##    f = open(file, encoding='ISO-8859-1')
-##    word_collection = generate_word_collection("training.txt")
-##
-##    numpy.save("word_collection.npy", word_collection)
-##    print("Generated Word Collection")  
-##
-##    x = []
-##    y = []
-##    listCount = []
-##    wordCount = []
-##    numDocWithTerm = {}
-##    numDoc = 0
-##    
-##    for document in f:
-##        lst = {}
-##        count = 0
-##        for word in document.split()[:-1]:
-##            if word not in lst:
-##                lst.update({word: 1})
-##                if word not in numDocWithTerm:
-##                    numDocWithTerm.update({word: 1})
-##                else:
-##                    numDocWithTerm[word] += 1
-##            else:
-##                lst[word] += 1
-##            count += 1
-##        listCount.append(lst)
-##        wordCount.append(count)
-##        numDoc += 1
-##        y.append(int(document.rsplit(' ', 1)[1][1:]))
-##
-##    print("Finished First Loop")
-##    
-##    for i in range(numDoc):
-##        row = []
-##        col = []
-##        data = []
-##        for word in listCount[i]:
-##            num = (listCount[i][word]/wordCount[i]) * log(numDoc/numDocWithTerm[word])
-##            col.append(0)
-##            row.append(word_collection.index(word))
-##            data.append(num)
-##        x.append(csr_matrix((data, (row, col)), shape=(len(word_collection), 1)))
-##
-##    numpy.save("testX.npy", x)
-##    numpy.save("testY.npy", y)
-    
-##    word_collection = numpy.load("word_collection.npy")
-##    x = numpy.load("trainX.npy", allow_pickle=True)
-##    y = numpy.load("trainY.npy", allow_pickle=True)
-##
-##    learningRate = 44000
-##    theta = numpy.zeros((len(word_collection), 15))
-##    
-##    fullErr.append(error(theta, x,y))
-##    thetaF = train(theta, learningRate, 10, full_gradient, x, y, 1)
-##    print(fullErr)
-##    numpy.save("fullTrainErr.npy", fullErr)
-    
-##    stochasticErr.append(error(theta, x, y))
-##    thetaS = train(numpy.zeros((len(word_collection), 15)), 0.1, 10, stochastic_gradient, x, y, 1)
-##    print(stochasticErr)
-##    numpy.save("stochasticTestErr.npy", stochasticErr)
+    file = "testing.txt"
+    f = open(file, encoding='ISO-8859-1')
+    word_collection = generate_word_collection("training.txt")
 
-##    for i in range(-5, 4, 1):
-##        print(i)
-##        thetaS = train(numpy.zeros((len(word_collection), 15)), 0.1, 10, stochastic_gradient, x, y, 10**i)
-##        lamdaErr.append(error(thetaS, x, y))
-##        numpy.save("lamdaErr.npy", lamdaErr)
+    numpy.save("word_collection.npy", word_collection)
+    print("Generated Word Collection")  
 
-    y = numpy.load("lamdaErr.npy")
-    x = numpy.geomspace(0.00001, 1000, 9)
-    plt.plot(x, y)
-    plt.title("Q6f")
-    plt.xscale("log")
-    plt.yscale("log")
-    plt.show()
+    x = []
+    y = []
+    listCount = []
+    wordCount = []
+    numDocWithTerm = {}
+    numDoc = 0
+    
+    for document in f:
+        lst = {}
+        count = 0
+        for word in document.split()[:-1]:
+            if word not in lst:
+                lst.update({word: 1})
+                if word not in numDocWithTerm:
+                    numDocWithTerm.update({word: 1})
+                else:
+                    numDocWithTerm[word] += 1
+            else:
+                lst[word] += 1
+            count += 1
+        listCount.append(lst)
+        wordCount.append(count)
+        numDoc += 1
+        y.append(int(document.rsplit(' ', 1)[1][1:]))
+
+    print("Finished First Loop")
+    
+    for i in range(numDoc):
+        row = []
+        col = []
+        data = []
+        for word in listCount[i]:
+            num = (listCount[i][word]/wordCount[i]) * log(numDoc/numDocWithTerm[word])
+            col.append(0)
+            row.append(word_collection.index(word))
+            data.append(num)
+        x.append(csr_matrix((data, (row, col)), shape=(len(word_collection), 1)))
+
+    numpy.save("testX.npy", x)
+    numpy.save("testY.npy", y)
+    
+    word_collection = numpy.load("word_collection.npy")
+    x = numpy.load("trainX.npy", allow_pickle=True)
+    y = numpy.load("trainY.npy", allow_pickle=True)
+
+    learningRate = 44000
+    theta = numpy.zeros((len(word_collection), 15))
+    
+    fullErr.append(error(theta, x,y))
+    thetaF = train(theta, learningRate, 10, full_gradient, x, y, 1)
+    print(fullErr)
+    numpy.save("fullTrainErr.npy", fullErr)
+    
+    stochasticErr.append(error(theta, x, y))
+    thetaS = train(numpy.zeros((len(word_collection), 15)), 0.1, 10, stochastic_gradient, x, y, 1)
+    print(stochasticErr)
+    numpy.save("stochasticTestErr.npy", stochasticErr)
+
+    for i in range(-5, 4, 1):
+        print(i)
+        thetaS = train(numpy.zeros((len(word_collection), 15)), 0.1, 10, stochastic_gradient, x, y, 10**i)
+        lamdaErr.append(error(thetaS, x, y))
+        numpy.save("lamdaErr.npy", lamdaErr)
