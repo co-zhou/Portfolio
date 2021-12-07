@@ -1,1 +1,1 @@
-This project takes an image of a silicon wafer and identifies which type of defect it has from 6 categories. A custom neural network is used.
+This project takes an image of a silicon wafer and identifies which type of defect it has from 6 categories. A custom neural network is used. The program was executed in google collab.
