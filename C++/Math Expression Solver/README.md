@@ -1,4 +1,4 @@
-Run the program using evalPostFix
+Run the program using ./evalPostFix
 
 This program is a simple calculator that solves the mathematical expression in infix format. It only supports the basic mathematical operators ("+", "-", "\*", "/")
 and single digit integers (0-9). The program will not follow standard order of operations, but will follow parentheses.
