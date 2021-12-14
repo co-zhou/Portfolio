@@ -1,0 +1,31 @@
+GraphHelper.h
+Edge{}
+Node{}
+Triangle{implement}
+
+Feature Graph.h
+	insert(node)
+	insert(edge)
+
+Graph Analyzer
+	FeatureGraph wrapper;
+	Maxheap triangles;
+	insert: change heap and graph
+
+M1: Diameter
+	Shortest path
+
+M2: Density/Cluster coefficient
+	# open triangles/# closed triangles
+	open: A-B-C
+	closed: A-B-C-A
+
+M3: Top k open triangles
+	Store in max heap
+	cannot recompute after insertion
+	score(t) = sum of weights of the two edges
+
+M4: Top - k neighbors (node, vector)
+	vector = {w1,w2,...,wn}
+	feature = {f1,f2,..,fn}
+	score(node, vector) = Dotproduct(vector,feature)
