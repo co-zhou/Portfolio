@@ -33,14 +33,7 @@ void Dictionary::bulkInsert(int n, string *keys) {
 	size2 = new int[n];
 	hash2 = new int**[n];
 	hashTable = new Node**[n];
-	/*
-	for(int i = 0; i < n; i++)
-		cout << numInBucket[i] << " ";
-	cout << endl;
-        for(int i = 0; i < n; i++)
-                cout << bucketNum[i] << " ";
-	cout << endl;
-	*/
+
 	for(int i = 0; i < n; i++){
 		hash2[i] = NULL;
 		if(numInBucket[i] == 0){
@@ -83,21 +76,13 @@ void Dictionary::remove(string key) {
         if(size1 > 1) numRows = (int) ceil(log2(size1));
         int bucketNum1 = getHash(hash1, numRows, key) % size1;
         int bucketNum2 = 0;
-        /*
-        if(size2[bucketNum1] == 0) {
-                cout << "\"" << key << "\" was not found: ";
-                return false;
-        }
-        */
+
         numRows = 1;
         if(size2[bucketNum1] > 1) {
                 numRows = (int) ceil(log2(size2[bucketNum1]));
                 bucketNum2 = getHash(hash2[bucketNum1], numRows, key) % size2[bucketNum1];
         }
-        /*
-        if(size2[bucketNum1] > 1) numRows = (int) ceil(log2(size2[bucketNum1]));
-        int bucketNum2 = getHash(hash2[bucketNum1], numRows, key) % size2[bucketNum1];
-        */
+
         Node *prev = NULL;
 	Node *cur = hashTable[bucketNum1][bucketNum2];
         while(cur != NULL){
@@ -119,21 +104,13 @@ bool Dictionary::find(string key) {
         if(size1 > 1) numRows = (int) ceil(log2(size1));
 	int bucketNum1 = getHash(hash1, numRows, key) % size1;
 	int bucketNum2 = 0;
-	/*
-	if(size2[bucketNum1] == 0) {
-	        cout << "\"" << key << "\" was not found: ";
-		return false;
-	}
-	*/
+
 	numRows = 1;
         if(size2[bucketNum1] > 1) {
 		numRows = (int) ceil(log2(size2[bucketNum1]));
         	bucketNum2 = getHash(hash2[bucketNum1], numRows, key) % size2[bucketNum1];
 	}
-	/*
-        if(size2[bucketNum1] > 1) numRows = (int) ceil(log2(size2[bucketNum1]));
-	int bucketNum2 = getHash(hash2[bucketNum1], numRows, key) % size2[bucketNum1];
-	*/
+
 	for(Node* n = hashTable[bucketNum1][bucketNum2]; n != NULL; n = n->next){
 		if(key.compare(n->key) == 0){
 			cout << "\"" << key << "\" was found in bucket (" << bucketNum1 << "," << bucketNum2 << "): ";
