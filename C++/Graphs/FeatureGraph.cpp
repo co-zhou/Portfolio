@@ -8,15 +8,10 @@ using namespace std;
 
 
 FeatureGraph::FeatureGraph(int N, int d, vector<Node> nodes, vector<Edge> edges) {
-    //int numNodes;
 	numNodes = N;
-    //vector<Node> nodes;
     	this->nodes = nodes;
-    //vector<Edge> edges;
 	this->edges = edges;
-    //int skillLength;
 	skillLength = d;
-    //map<int,vector<pair<int,int>>> adjacencyList;
     	for(int i = 0; i < N; i++){
 		pair<int,vector<pair<int,int>>> p;
 		p.first = nodes[i].id;
@@ -32,7 +27,6 @@ FeatureGraph::FeatureGraph(int N, int d, vector<Node> nodes, vector<Edge> edges)
 };
 
 void FeatureGraph::insert(Node node){
-    //TODO
     nodes.push_back(node);
     pair<int,vector<pair<int,int>>> p;
     p.first = node.id;
@@ -41,7 +35,6 @@ void FeatureGraph::insert(Node node){
 };
     
 void FeatureGraph::insert(Edge edge){
-    //TODO
     edges.push_back(edge);
     adjacencyList[edge.IdA].push_back(pair<int,int>(edge.IdB,edge.weight));
     adjacencyList[edge.IdB].push_back(pair<int,int>(edge.IdA,edge.weight));
