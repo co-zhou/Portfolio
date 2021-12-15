@@ -19,7 +19,7 @@ public:
     // N: The number of nodes
     // nodeIds: the ids of nodes as integers
     // d: the size of the skill vectors of all nodes
-    // nodeIDtoSkillsMap: a map form the nodeID to their skiils vector
+    // nodeIDtoSkillsMap: a map form the nodeID to their skills vector
     FeatureGraph(int N, int d, vector<Node> nodes, vector<Edge> edges);
 
 
