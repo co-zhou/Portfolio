@@ -33,13 +33,12 @@ public:
         };
 
 	FeatureGraph G;
-        //TODO: Store a heap of triangeles using cpp priority_queue
+        //Store a heap of triangeles using cpp priority_queue
         priority_queue<Triangle*, vector<Triangle*>, CompareTriangle> triangleHeap;
         vector<Triangle*> triangleVector;
 
     //constructor
-	// 
-	// G: FeatureGraph to build on
+    // G: FeatureGraph to build on
     GraphAnalyzer(FeatureGraph& G):G(G){
         this->G = G;
         //for each node
@@ -78,7 +77,7 @@ public:
     void insert(Node n);
 
 
-    //Insert given edge into graph
+    // Insert given edge into graph
     // You may assume that the edge contains nodes already inserted into the graph
     void insert(Edge e);
 
