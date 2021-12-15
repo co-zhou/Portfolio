@@ -6,7 +6,6 @@ using namespace std;
 
 void GraphAnalyzer::insert(Node n) {
     G.insert(n);
-    // TODO Adjust calculations for ratio of open triangles and topKtriangles
 };
 
 void GraphAnalyzer::insert(Edge e) {
@@ -51,7 +50,6 @@ void GraphAnalyzer::insert(Edge e) {
 };
 
 int GraphAnalyzer::diameter() {
-    //TODO
     	//For each node
 	int diameter = 0;
     	for(int a = 0; a < G.numNodes; a++){
@@ -67,24 +65,11 @@ int GraphAnalyzer::diameter() {
 			distances.insert(p);
 			minheap.push(p);
                	}
-		/*
-		priority_queue<pair<int,int>, vector<pair<int,int>>, CompareDistance> test = minheap;
-		
-		while(!test.empty()){
-			cout << "(" << test.top().first << ", " << test.top().second  << ") ";
-			test.pop();
-		}
-		cout << endl;
-		*/
+
 		//initialize explored set as vector of node ids
 		vector<int> explored;
 		//while number of nodes in explored set is less than number of nodes in graph
 		while(explored.size() < G.numNodes){
-			/*
-			for(vector<int>::iterator j = explored.begin(); j < explored.end(); j++)
-				cout << *j << " ";
-			cout << endl;
-			*/
 			//move shortest distance to explored set
 			int p;
 			bool found;
@@ -109,19 +94,12 @@ int GraphAnalyzer::diameter() {
 				}
 			}
 		}
-		/*
-		for(map<int,int>::iterator j = distances.begin(); j != distances.end(); j++){
-			cout << "(" << j->first << ", " << j->second  << ") ";
-		}
-		cout << endl;
-		*/
     	}
     	return diameter;
 };
 
 
 float GraphAnalyzer::openClosedTriangleRatio() {
-    //TODO
     	int numOpen = 0;
 	int numClosed = 0;
     	for(vector<Triangle*>::iterator i = triangleVector.begin(); i < triangleVector.end(); i++){
@@ -133,7 +111,6 @@ float GraphAnalyzer::openClosedTriangleRatio() {
 };
 
 string GraphAnalyzer::topKOpenTriangles(int k) {
-    //TODO
 	int i = 0;
 	string str;
 	priority_queue<Triangle*, vector<Triangle*>, CompareTriangle> heap = triangleHeap;
@@ -174,8 +151,6 @@ vector<int> GraphAnalyzer::topKNeighbors(int nodeID, int k, vector<float> w) {
 	vector<int> list;
 	priority_queue<pair<int,float>,vector<pair<int,float>>, CompareNeighbor> maxheap;
 
-        //priority_queue<pair<int,float>,vector<pair<int,float>>, CompareNeighbor> temp;
-
 	for(vector<Edge>::iterator i = G.edges.begin(); i < G.edges.end(); i++){
     		int ID = -1;
     		if(i->IdA == nodeID){
@@ -196,19 +171,9 @@ vector<int> GraphAnalyzer::topKNeighbors(int nodeID, int k, vector<float> w) {
 	    			}
 				i++;
         		}
-
-                        //temp.push(pair<int,float>(ID,score));
-
 			maxheap.push(pair<int,float>(ID,score));
     		}
 	}
-
-/*	int i = 1;
-	while(!temp.empty()){
-		cout << "Node" << i << ": (" << temp.top().first << ", " << temp.top().second << ")" << endl;
-		temp.pop();
-		i++;
-	}*/
 
 	for(int i = 0; i < k; i++){
    		list.push_back(maxheap.top().first);
@@ -219,7 +184,6 @@ vector<int> GraphAnalyzer::topKNeighbors(int nodeID, int k, vector<float> w) {
 
 
 int GraphAnalyzer::topNonNeighbor(int nodeID, vector<float> w) {
-    //TODO
     //vector<int> of all other nodes
     //for(nodeID in adjacencyList[nodeID]) if one id is nodeID, delete other id from vector
     //for(node in vector) {
@@ -251,12 +215,7 @@ int GraphAnalyzer::topNonNeighbor(int nodeID, vector<float> w) {
 		}
 		if(!found) i++;
 	}
-/*
-	for(vector<Node>::iterator i = n.begin(); i < n.end(); i++){
-		cout << i->id << " ";
-	}
-	cout << endl;
-*/
+
 	for(vector<Node>::iterator j = n.begin(); j < n.end(); j++){
 		int score = 0;
                 for(int k = 0; k < G.skillLength; k++) score += j->features[k] * w[k];
@@ -271,7 +230,6 @@ int GraphAnalyzer::topNonNeighbor(int nodeID, vector<float> w) {
 
 
 float GraphAnalyzer::jacardIndexOfTopKNeighborhoods(int nodeA, int nodeB, int k, vector<float> w) {
-    //TODO
 	vector<int> vectorA = topKNeighbors(nodeA, k, w);
 	vector<int> vectorB = topKNeighbors(nodeB, k, w);
 
