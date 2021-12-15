@@ -14,26 +14,26 @@ void small_dict_test()
     Dictionary small_dict;
 
     // BulkInsert the keys into the dictionary.
-    /* Expected results: hash functions used, sum of squares of number of keys, number of trials, 3pts, 1pt each*/
+    /* Expected results: hash functions used, sum of squares of number of keys, number of trials */
     string strs[] = {"Fred Astaire", "Lauren Bacall", "Brigitte Bardot", "John Belushi", "Ingmar Bergman"};
     int n = 5;
     small_dict.bulkInsert(n, strs);
 
 
     // Insert "Humphrey Bogart" into the dictionary.
-    /* Expected results: whether collisions happened in second level, 1pt*/
+    /* Expected results: whether collisions happened in second level */
     small_dict.insert("Humphrey Bogart");
 
     // Remove "Lauren Bacall" from the dictionary.
-    /* Expected results: removal is successful, 1pt*/
+    /* Expected results: removal is successful */
     small_dict.remove("Lauren Bacall");
 
     // Find "Fred Astaire" in the dictionary.
-    /* Expected results: print 1, finding is successful, buckets accessed during the process, 1pt*/
+    /* Expected results: print 1, finding is successful, buckets accessed during the process */
     cout << small_dict.find("Fred Astaire") << endl;
 
     // Find "Lauren Bacall" in the dictionary.
-    /* Expected results: print 0, finding is unsuccessful, item doesn't exist, 1pt*/
+    /* Expected results: print 0, finding is unsuccessful, item doesn't exist */
     cout << small_dict.find("Lauren Bacall") << endl;
 }
 
@@ -47,7 +47,7 @@ void large_dict_test()
     Dictionary large_dict;
 
     // BulkInsert the keys into the dictionary.
-    /* Expected results: hash functions used, sum of squares of number of keys, number of trials, 3pts, 1pt each*/
+    /* Expected results: hash functions used, sum of squares of number of keys, number of trials */
     string strs[] = {"Emma Ember", "Olivia Rosalie", "Ava Journee", "Isabella Presley", "Sophia Amy",
                      "Mia Mckenzie", "Amelia Alaina", "Harper Brooke", "Evelyn Alana",
                      "Abigail Summer", "Emily Rachel", "Elizabeth Mya", "Mila Everleigh", "Ella Daniela",
@@ -92,43 +92,43 @@ void large_dict_test()
     large_dict.bulkInsert(n, strs);
 
     // Find "Lillian Elise" in the dictionary.
-    /* Expected results: print 1, finding is successful, buckets accessed during the process, 1pt*/
+    /* Expected results: print 1, finding is successful, buckets accessed during the process */
     cout << large_dict.find("Lillian Elise") << endl;
 
     // Remove "Zexi Huang" from the dictionary.
-    /* Expected results: removal is unsuccessful, item doesn't exist, 1pt*/
+    /* Expected results: removal is unsuccessful, item doesn't exist */
     large_dict.remove("Zexi Huang");
 
     // Insert "Sean Jaffe" into the dictionary.
-    /* Expected results: whether collisions happened in second level, 1pt*/
+    /* Expected results: whether collisions happened in second level */
     large_dict.insert("Sean Jaffe");
 
     // Find "Sean Jaffe" in the dictionary.
-    /* Expected results: print 1, finding is successful, buckets accessed during the process, 1pt*/
+    /* Expected results: print 1, finding is successful, buckets accessed during the process */
     cout << large_dict.find("Sean Jaffe") << endl;
 
     // Remove "Brooklyn Morgan" from the dictionary.
-    /* Expected results: removal is successful, 1pt*/
+    /* Expected results: removal is successful */
     large_dict.remove("Brooklyn Morgan");
 
     // Find "Lillian Elise" in the dictionary.
-    /* Expected results: print 1, finding is successful, buckets accessed during the process, results should be the same as the first find, 1pt*/
+    /* Expected results: print 1, finding is successful, buckets accessed during the process, results should be the same as the first find */
     cout << large_dict.find("Lillian Elise") << endl;
 
     // Find "Brooklyn Morgan" from the dictionary.
-    /* Expected results: print 0, finding is unsuccessful, 1pt*/
+    /* Expected results: print 0, finding is unsuccessful */
     cout << large_dict.find("Brooklyn Morgan") << endl;
 
     // Remove "Lillian Elise" from the dictionary.
-    /* Expected results: removal is successful, 1pt*/
+    /* Expected results: removal is successful */
     large_dict.remove("Lillian Elise");
 
     // Insert "Lillian Elise" into the dictionary.
-    /* Expected results: whether collisions happened in second level, 1pt*/
+    /* Expected results: whether collisions happened in second level */
     large_dict.insert("Lillian Elise");
 
     // Find "Lillian Elise" in the dictionary.
-    /* Expected results: print 1, finding is successful, buckets accessed during the process, results should be the same as the first find, 1pt*/
+    /* Expected results: print 1, finding is successful, buckets accessed during the process, results should be the same as the first find */
     cout << large_dict.find("Lillian Elise") << endl;
 }
 
