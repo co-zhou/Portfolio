@@ -22,10 +22,8 @@ struct Edge {
 };
 
 class Triangle {
-    // TODO make a Triangle class with appropriate fields and methods
 
 public:
-    // TODO make appropriate constuctor
     // weight == -1 if closed
     Triangle(int vertex, int nodeA, int nodeB, int flag, int weight) {
 	this->vertex = vertex;
