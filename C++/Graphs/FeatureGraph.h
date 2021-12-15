@@ -15,11 +15,7 @@ using namespace std;
 class FeatureGraph {
 
 public:
-    // TODO add necessary private fields
-
-
     // Constructor
-    // 
     // N: The number of nodes
     // nodeIds: the ids of nodes as integers
     // d: the size of the skill vectors of all nodes
