@@ -23,7 +23,7 @@ template <class Item>
 Item arrayStack<Item>::top()
 {
 	// check stack not empty
- 	assert(used > 0);
+	assert(used > 0);
 	// return the top element
     return data[used-1];
 }
