@@ -1,12 +1,6 @@
-# Starter code 
 
 def run_train_test(training_input, testing_input):
     """
-    Implement the training and testing procedure here. You are permitted
-    to use additional functions but DO NOT change this function definition.
-    You are permitted to use the numpy library but you must write
-    your own code for the linear classifier.
-
     Inputs:
         training_input: list form of the training file
             e.g. [[3, 5, 5, 5],[.3, .1, .4],[.3, .2, .1]...]
