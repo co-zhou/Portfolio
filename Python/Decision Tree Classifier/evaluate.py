@@ -4,7 +4,6 @@ import json
 
 if __name__ == "__main__":
 
-    # Load student code
     from mp2 import run_train_test
 
     train_data = json.load(open('train.json'))
