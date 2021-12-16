@@ -1,5 +1,4 @@
 // Corey Zhou
-// Project 2
 
 #ifndef LIST_H
 #define LIST_H
