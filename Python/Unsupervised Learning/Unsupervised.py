@@ -52,9 +52,6 @@ def plot(df, feature):
 def main():
     DATASET_PATH = './glass_data_labeled.csv'
     df = pd.read_csv(DATASET_PATH)
-
-##    for i in range(1, 10):
-##        plot(df, df.columns[i])
         
     print("Correlation Matrix:")
     print(df.loc['0':'213','RI':].corr())
@@ -65,7 +62,6 @@ def main():
     pca = PCA(n_components=4)
     pca.fit(X)
     X = pca.transform(X)
-##    print(pca.components_)
     
     KM = cl.KMeans(n_clusters=6).fit(X)
     MS = cl.MeanShift().fit(X)
