@@ -1,5 +1,4 @@
 // Corey Zhou
-// Project 1
 
 #include "wordsearchcount.h"
 
