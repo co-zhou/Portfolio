@@ -1,5 +1,4 @@
 // Corey Zhou
-// Project 2
 
 #ifndef WORDSEARCHCOUNT_H
 #define WORDSEARCHCOUNT_H
