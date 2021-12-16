@@ -1,5 +1,4 @@
 // Corey Zhou
-// Project 2
 
 #ifndef ITEMTYPE_H
 #define ITEMTYPE_H
