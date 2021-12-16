@@ -50,9 +50,6 @@ def growTree(root, threshold, depth):
 
 def run_train_test(training_data, training_labels, testing_data):
     """
-    Implement the training and testing procedure here. You are permitted
-    to use additional functions but DO NOT change this function definition.
-
     Inputs:
         training_data: List[List[float]]
         training_label: List[int]
