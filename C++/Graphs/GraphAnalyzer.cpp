@@ -4,51 +4,6 @@
 
 using namespace std;
 
-void GraphAnalyzer::insert(Node n) {
-    G.insert(n);
-};
-
-void GraphAnalyzer::insert(Edge e) {
-        for(vector<pair<int,int>>::iterator i = G.adjacencyList[e.IdA].begin(); i < G.adjacencyList[e.IdA].end(); i++){
-                bool found = false;
-                for(vector<pair<int,int>>::iterator j = G.adjacencyList[i->first].begin(); j < G.adjacencyList[i->first].end(); j++){
-                        if(e.IdB == j->first) found = true;
-                }
-                // Check if open triangle turned into closed triangle else new open triangle
-                if(found){
-                        for(vector<Triangle*>::iterator j = triangleVector.begin(); j < triangleVector.end(); j++){
-                                if(((*j)->nodeA == e.IdA && (*j)->nodeB == e.IdB) || ((*j)->nodeA == e.IdB && (*j)->nodeB == e.IdA)) {
-                                        (*j)->flag = 0;
-                                }
-                        }
-                } else {
-                        Triangle* t = new Triangle(e.IdA, i->first, e.IdB, 1, i->second + e.weight);
-                        triangleVector.push_back(t);
-                        triangleHeap.push(t);
-                }
-        }
-
-        for(vector<pair<int,int>>::iterator i = G.adjacencyList[e.IdB].begin(); i < G.adjacencyList[e.IdB].end(); i++){
-                bool found = false;
-                for(vector<pair<int,int>>::iterator j = G.adjacencyList[i->first].begin(); j < G.adjacencyList[i->first].end(); j++){
-                        if(e.IdA == j->first) found = true;
-                }
-                // Check if open triangle turned into closed triangle else new open triangle
-                if(found){
-                        for(vector<Triangle*>::iterator j = triangleVector.begin(); j < triangleVector.end(); j++){
-                                if(((*j)->nodeA == e.IdA && (*j)->nodeB == e.IdB) || ((*j)->nodeA == e.IdB && (*j)->nodeB == e.IdA)) {
-                                        (*j)->flag = 0;
-                                }
-                        }
-                } else {
-                        Triangle* t = new Triangle(e.IdB, i->first, e.IdA, 1, i->second + e.weight);
-                        triangleVector.push_back(t);
-                        triangleHeap.push(t);
-                }
-        }
-	G.insert(e);
-};
-
 int GraphAnalyzer::diameter() {
     	//For each node
 	int diameter = 0;
@@ -249,4 +204,49 @@ float GraphAnalyzer::jacardIndexOfTopKNeighborhoods(int nodeA, int nodeB, int k,
 		if(!found) numUnion++;
 	}
 	return (numIntersection*1.0)/numUnion;
+};
+
+void GraphAnalyzer::insert(Node n) {
+    G.insert(n);
+};
+
+void GraphAnalyzer::insert(Edge e) {
+        for(vector<pair<int,int>>::iterator i = G.adjacencyList[e.IdA].begin(); i < G.adjacencyList[e.IdA].end(); i++){
+                bool found = false;
+                for(vector<pair<int,int>>::iterator j = G.adjacencyList[i->first].begin(); j < G.adjacencyList[i->first].end(); j++){
+                        if(e.IdB == j->first) found = true;
+                }
+                // Check if open triangle turned into closed triangle else new open triangle
+                if(found){
+                        for(vector<Triangle*>::iterator j = triangleVector.begin(); j < triangleVector.end(); j++){
+                                if(((*j)->nodeA == e.IdA && (*j)->nodeB == e.IdB) || ((*j)->nodeA == e.IdB && (*j)->nodeB == e.IdA)) {
+                                        (*j)->flag = 0;
+                                }
+                        }
+                } else {
+                        Triangle* t = new Triangle(e.IdA, i->first, e.IdB, 1, i->second + e.weight);
+                        triangleVector.push_back(t);
+                        triangleHeap.push(t);
+                }
+        }
+
+        for(vector<pair<int,int>>::iterator i = G.adjacencyList[e.IdB].begin(); i < G.adjacencyList[e.IdB].end(); i++){
+                bool found = false;
+                for(vector<pair<int,int>>::iterator j = G.adjacencyList[i->first].begin(); j < G.adjacencyList[i->first].end(); j++){
+                        if(e.IdA == j->first) found = true;
+                }
+                // Check if open triangle turned into closed triangle else new open triangle
+                if(found){
+                        for(vector<Triangle*>::iterator j = triangleVector.begin(); j < triangleVector.end(); j++){
+                                if(((*j)->nodeA == e.IdA && (*j)->nodeB == e.IdB) || ((*j)->nodeA == e.IdB && (*j)->nodeB == e.IdA)) {
+                                        (*j)->flag = 0;
+                                }
+                        }
+                } else {
+                        Triangle* t = new Triangle(e.IdB, i->first, e.IdA, 1, i->second + e.weight);
+                        triangleVector.push_back(t);
+                        triangleHeap.push(t);
+                }
+        }
+	G.insert(e);
 };
