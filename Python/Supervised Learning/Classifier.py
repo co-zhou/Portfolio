@@ -60,19 +60,6 @@ def K_Nearest_Neighbors(trainX, trainY, validationX, validationY):
     f = KNeighborsClassifier(n_neighbors = 19, weights = 'distance')
     f.fit(trainX,trainY)
     print(f.score(validationX, validationY))
-
-##    numNeighbors = 0
-##    percent = 0.0
-##    for i in range(3,199,2):
-##        print(i)
-##        f = KNeighborsClassifier(n_neighbors = i, weights = 'distance')
-##        f.fit(trainX,trainY)
-##        temp = validate(f, validationX, validationY)
-##        if temp > percent:
-##            percent = temp
-##            numNeighbors = i
-##    print(percent)
-##    print(numNeighbors)
     
     return confusion(f, validationX, validationY)
 
@@ -88,11 +75,6 @@ def Naive_Bayes(trainX, trainY, validationX, validationY):
     f = GaussianNB(var_smoothing=(10**-3))
     f.fit(trainX,trainY)
     print(f.score(validationX, validationY))
-
-##    for i in range(0,-101,-1):
-##        f = GaussianNB(var_smoothing=(10**i))
-##        f.fit(trainX,trainY)
-##        print("i = " + str(i) + ":", validate(f, validationX, validationY))
 
     return confusion(f, validationX, validationY)
 
