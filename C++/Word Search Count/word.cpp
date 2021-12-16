@@ -1,5 +1,4 @@
 // Corey Zhou
-// Project 2
 
 #include "word.h"
 
