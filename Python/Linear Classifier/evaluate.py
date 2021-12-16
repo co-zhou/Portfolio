@@ -23,9 +23,7 @@ def run_test(fn, train_input, test_input, expected, timeout, threshold=1e-10):
     acc = 0
     try:
         with time_limit(timeout):
-            # TODO: Run test here
             predicted = fn(train_input, test_input)
-            #print(predicted)
             acc = get_acc(expected, predicted)
 
     except TimeoutException as e:
@@ -46,7 +44,6 @@ def get_acc(expected, actual):
 
 if __name__ == "__main__":
 
-    # Load student code
     from pa1 import run_train_test
 
     reference_dir = 'data'
@@ -78,7 +75,6 @@ if __name__ == "__main__":
             test = [[float(y) for y in x.strip().split(" ")] for x in f]
             test[0] = [int(x) for x in test[0]]
 
-        #evaluate student code
         acc = run_test(run_train_test, train, test, soln, 5)
 
 
