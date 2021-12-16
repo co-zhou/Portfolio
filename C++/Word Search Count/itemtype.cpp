@@ -1,5 +1,4 @@
-// Corey Zhou 12/6/2018
-// Project 2
+// Corey Zhou
 
 #include <iostream>
 #include <string>
