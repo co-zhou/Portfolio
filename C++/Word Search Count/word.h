@@ -1,5 +1,4 @@
 // Corey Zhou
-// Project 2
 
 #ifndef WORD_H
 #define WORD_H
