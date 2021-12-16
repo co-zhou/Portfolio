@@ -21,6 +21,6 @@ class arrayStack{
   // variable to indicate the top of the stack
         int used;
 };
-#include "arrayStack.cpp"  // <--- template class: THIS IS REQUIRED
+#include "arrayStack.cpp"
 #endif
  
