@@ -12,7 +12,7 @@ if __name__ == "__main__":
     prediction = run_train_test(train_data['data'], train_data['label'], dev_data['data'])
 
     accuracy = len([i for i in range(len(prediction)) if prediction[i] == dev_data['label'][i]]) / float(len(prediction))
-    '''
+    
     TP = len([i for i in range(len(prediction)) if prediction[i] == dev_data['label'][i] and dev_data['label'][i] > 0])
     FP = len([i for i in range(len(prediction)) if prediction[i] == dev_data['label'][i] and dev_data['label'][i] > 0])
     all_pos = len([_ for _ in dev_data['label'] if _ > 0])
@@ -26,5 +26,5 @@ if __name__ == "__main__":
     else:
         f1 = 0
     print(f1)
-    '''
+    
     print(accuracy)
