@@ -1,7 +1,7 @@
 # About Me
 I am a recent graduate of University of California Santa Barbara with a bachelor's degree in computer engineering. I have over five years experience in computer programming mainly in C++ and Python, but also with Java. My CK-12 internship and Capstone project taught me how to work remotely and how to create a product that ensures quality for the user.
 
-From an early childhood I always had a deep passion for gaming.
+From an early childhood I always had a deep passion for gaming. 
 
 # Math Interactives Internship, CK-12 Foundation
 Summer 2018 - Summer 2019
@@ -19,5 +19,6 @@ CK-12 is a non profit organization that has made free digital interactive textbo
 # Senior Capstone Project
 Fall 2020 - Spring 2021
 
+Every senior in the engineering department was tasked to complete an engineering project in one school year. My team was given the project to create an autonomous marine vehicle that will automatically move towards and stay near coordinates given by the user. I was mainly in charge of the cellular communication and the main software program inside the system. Due to Covid-19, most of the project was completed remotely with only the final contruction being in person.
 
 [Anchorless](https://sites.google.com/view/anchorless/home)
