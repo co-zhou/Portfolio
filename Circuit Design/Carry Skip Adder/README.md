@@ -1,1 +1,1 @@
-
+These files implement a 16bit Low Voltage Swing Carry Skip Adder. This design uses pass transistor logic, sense amplifiers, and complimentary domino logic to generate propagate, generate, kill, and sum bits at full voltage swing.
