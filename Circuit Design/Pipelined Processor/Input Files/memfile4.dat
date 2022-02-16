@@ -1,0 +1,18 @@
+3410ffff // ori $16 $0 0xffff 
+34110000 // ori $17 $0 0		Tag = 0, Set = 0, Offset = 0
+ae300000 // sw $16 0($17)		Store 0xffff in way 0 (Miss)
+3410eeee // ori $16 $0 0xeeee
+34110004 // ori $17 $0 4		Tag = 0, Set = 0, Offset = 1
+ae300000 // sw $16 0($17)		Store 0xeeee in way 0 (Hit)
+3410aaaa // ori $16 $0 0xaaaa
+3411400c // ori $17 $0 0x400c		Tag = 1, Set = 0, Offset = 3
+ae300000 // sw $16 0($17)		Store 0xaaaa in way 1 (Miss)
+34110000 // ori $17 $0 0		Tag = 0, Set = 0, Offset = 0
+8e320000 // lw $18 0($17)		Load 0xffff in $18 (Hit), U = 1
+3410bbbb // ori $16 $0 0xbbbb
+3411800c // ori $17 $0 0x800c		Tag = 2, Set = 0, Offset = 3
+ae300000 // sw $16 0($17)		Store 0xbbbb in way 1 (Miss)
+ae300010 // sw $16 0x10($17) 		Tag = 2, Set = 1, Offset = 3 Store 0xbbbb in way 0 (Miss)
+3411400c // ori $17 $0 0x400c		Tag = 1, Set = 0, Offset = 3
+8e320000 // lw $18 0($17)		Load 0xaaaa in $18. In way 0 (Miss)
+22520001 // addi $18 $18 1
