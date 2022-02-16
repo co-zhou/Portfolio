@@ -1,0 +1,103 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_BITSLICE {} {
+  make CDL_G -origin {1080 150}
+  make DCN_XOR -origin {820 -80}
+  make CDL_P -origin {820 150}
+  make CDL_K -origin {1340 150}
+  make DCN_PGK -origin {900 -300}
+  make SA -origin {1620 -80}
+  make input -name A -origin {710 70}
+  make input -name A_bar -origin {710 110}
+  make input -name B -origin {710 150}
+  make input -name B_bar -origin {710 190}
+  make input -name Cin -origin {670 -120}
+  make input -name Cin_bar -origin {670 -80}
+  make output -name Cout -origin {1730 -340}
+  make output -name Cout_bar -origin {1730 -300}
+  make output -name S -origin {1730 -120}
+  make output -name S_bar -origin {1730 -80}
+  make nmos -origin {1550 290}
+  make pmos -origin {1550 210}
+  make input -orient R270 -name Clk -origin {820 250}
+  make global -name GND -origin {1550 330}
+  make global -orient RY -name VDD -origin {1550 170}
+  make SA -origin {1620 -300}
+  make output -name P -origin {820 30}
+  make output -orient RX -name P_bar -origin {780 30}
+  make_wire 970 70 710 70
+  make_wire 970 70 1230 70
+  make_wire 970 110 710 110
+  make_wire 970 110 1230 110
+  make_wire 970 150 710 150
+  make_wire 970 150 1230 150
+  make_wire 970 190 710 190
+  make_wire 970 190 1230 190
+  make_wire 820 -210 820 10
+  make_wire 670 -340 670 -120
+  make_wire 670 -340 740 -340
+  make_wire 670 -80 740 -80
+  make_wire 740 -300 740 -80
+  make_wire 1040 50 860 50
+  make_wire 860 -210 860 50
+  make_wire 1080 10 900 10
+  make_wire 1080 10 1080 50
+  make_wire 900 -210 900 10
+  make_wire 1340 -210 980 -210
+  make_wire 1340 -210 1340 50
+  make_wire 940 -150 1300 -150
+  make_wire 940 -210 940 -150
+  make_wire 1300 -150 1300 50
+  make_wire 1490 250 1490 210
+  make_wire 1490 250 1490 290
+  make_wire 1340 250 1490 250
+  make_wire 1080 250 1340 250
+  make_wire 1080 250 820 250
+  make_wire 970 -120 1510 -120
+  make_wire 970 -80 1510 -80
+  make_wire 1620 250 1550 250
+  make_wire 1060 -300 1510 -300
+  make_wire 1060 -340 1510 -340
+  make_wire 1620 -230 1620 -10
+  make_wire 1620 -10 1620 250
+  make_wire 820 10 820 30
+  make_wire 820 30 820 50
+  make_wire 780 30 780 10
+  make_wire 780 30 780 50
+}
+
+proc ICON_BITSLICE args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {-160 -60} -name Cin
+  icon_term -type input -origin {-160 -20} -name Cin_bar
+  icon_term -type output -origin {-40 -100} -orient R90Y -name P_bar
+  icon_term -type input -origin {-80 100} -orient R90Y -name A
+  icon_term -type input -origin {-40 100} -orient R90Y -name A_bar
+  icon_term -type input -origin {0 100} -orient R90Y -name B
+  icon_term -type input -origin {40 100} -orient R90Y -name B_bar
+  icon_term -type output -origin {160 -60} -name Cout
+  icon_term -type output -origin {160 -20} -name Cout_bar
+  icon_term -type output -origin {160 20} -name S
+  icon_term -type output -origin {160 60} -name S_bar
+  icon_term -type output -origin {0 -100} -orient R90Y -name P
+  icon_term -type input -origin {80 100} -orient R90Y -name Clk
+  icon_property -origin {0 0} -size large -anchor center -label BITSLICE
+  icon_line -160 -100 160 -100 160 100 -160 100 -160 -100
+  icon_property -origin {-150 -60} -label Cin
+  icon_property -origin {-150 -20} -label Cin_bar
+  icon_property -origin {-40 -90} -rotate 1 -label P_bar
+  icon_property -origin {-80 90} -anchor e -rotate 1 -label A
+  icon_property -origin {-40 90} -anchor e -rotate 1 -label A_bar
+  icon_property -origin {0 90} -anchor e -rotate 1 -label B
+  icon_property -origin {40 90} -anchor e -rotate 1 -label B_bar
+  icon_property -origin {150 -60} -anchor e -label Cout
+  icon_property -origin {150 -20} -anchor e -label Cout_bar
+  icon_property -origin {150 20} -anchor e -label S
+  icon_property -origin {150 60} -anchor e -label S_bar
+  icon_property -origin {0 -90} -rotate 1 -label P
+  icon_property -origin {80 90} -anchor e -rotate 1 -label Clk
+  icon_property -origin {-160 320} -type user -name name
+  icon_property -origin {-160 340} -type user -name M
+  icon_property -origin {-160 360} -type user -name dpc
+}
+

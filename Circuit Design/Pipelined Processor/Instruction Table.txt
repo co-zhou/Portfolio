@@ -1,0 +1,27 @@
+add	000000 rs5 rt5 rd5 shamt5 100000
+addu	000000 rs5 rt5 rd5 shamt5 100001
+addi	001000 rs5 rt5 imm16
+addiu	001001 rs5 rt5 imm16
+sub	000000 rs5 rt5 rd5 shamt5 100010
+subu	000000 rs5 rt5 rd5 shamt5 100011
+and	000000 rs5 rt5 rd5 shamt5 100100
+andi	001100 rs5 rt5 imm16
+or	000000 rs5 rt5 rd5 shamt5 100101
+ori	001101 rs5 rt5 imm16
+xor	000000 rs5 rt5 rd5 shamt5 100110
+xnor	000000 rs5 rt5 rd5 shamt5 100111
+xori	000110 rs5 rt5 imm16
+slt	000000 rs5 rt5 rd5 shamt5 101010
+sltu	000000 rs5 rt5 rd5 shamt5 101011
+slti	001010 rs5 rt5 imm16
+sltiu	001011 rs5 rt5 imm16
+lui	001111 rs5 rt5 imm16
+lw	100011 rs5 rt5 imm16
+sw	101011 rs5 rt5 imm16
+j	000010 addr26
+bne	000101 rs5 rt5 imm16
+beq	000100 rs5 rt5 imm16
+mult	000000 rs5 rt5 rd5 shamt5 011000
+multu	000000 rs5 rt5 rd5 shamt5 011001
+mfhi	000000 rs5 rt5 rd5 shamt5 010000
+mflo	000000 rs5 rt5 rd5 shamt5 010010

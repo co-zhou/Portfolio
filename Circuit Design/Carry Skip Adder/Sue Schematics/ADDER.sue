@@ -1,0 +1,365 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_ADDER {} {
+  make DCN_SKIP -origin {800 -330}
+  make input -name Cin -origin {230 360}
+  make input -name Cin_bar -origin {200 400}
+  make input -orient R90Y -name Clk -origin {470 520}
+  make input -orient R90Y -name Clk -origin {920 520}
+  make BITSLICE -origin {840 420}
+  make BITSLICE -origin {390 420}
+  make input -orient R90Y -name Clk -origin {1370 520}
+  make input -orient R90Y -name Clk -origin {1820 520}
+  make BITSLICE -origin {1740 420}
+  make BITSLICE -origin {1290 420}
+  make input -orient R90Y -name Clk -origin {2270 520}
+  make input -orient R90Y -name Clk -origin {2720 520}
+  make BITSLICE -origin {2640 420}
+  make BITSLICE -origin {2190 420}
+  make input -orient R90Y -name Clk -origin {3170 520}
+  make input -orient R90Y -name Clk -origin {3620 520}
+  make BITSLICE -origin {3540 420}
+  make BITSLICE -origin {3090 420}
+  make input -orient R90Y -name Clk -origin {4100 520}
+  make input -orient R90Y -name Clk -origin {4550 520}
+  make BITSLICE -origin {4470 420}
+  make BITSLICE -origin {4020 420}
+  make input -orient R90Y -name Clk -origin {5000 520}
+  make input -orient R90Y -name Clk -origin {5450 520}
+  make BITSLICE -origin {5370 420}
+  make BITSLICE -origin {4920 420}
+  make input -orient R90Y -name Clk -origin {5900 520}
+  make input -orient R90Y -name Clk -origin {6350 520}
+  make BITSLICE -origin {6270 420}
+  make BITSLICE -origin {5820 420}
+  make input -orient R90Y -name Clk -origin {6800 520}
+  make input -orient R90Y -name Clk -origin {7250 520}
+  make BITSLICE -origin {7170 420}
+  make BITSLICE -origin {6720 420}
+  make input -orient R90Y -name A10 -origin {4840 520}
+  make input -orient R90Y -name A_bar10 -origin {4880 520}
+  make input -orient R90Y -name B10 -origin {4920 520}
+  make input -orient R90Y -name B_bar10 -origin {4960 520}
+  make input -orient R90Y -name A11 -origin {5290 520}
+  make input -orient R90Y -name A_bar11 -origin {5330 520}
+  make input -orient R90Y -name B11 -origin {5370 520}
+  make input -orient R90Y -name B_bar11 -origin {5410 520}
+  make input -orient R90Y -name A12 -origin {5740 520}
+  make input -orient R90Y -name A_bar12 -origin {5780 520}
+  make input -orient R90Y -name B12 -origin {5820 520}
+  make input -orient R90Y -name B_bar12 -origin {5860 520}
+  make input -orient R90Y -name A13 -origin {6190 520}
+  make input -orient R90Y -name A_bar13 -origin {6230 520}
+  make input -orient R90Y -name B13 -origin {6270 520}
+  make input -orient R90Y -name B_bar13 -origin {6310 520}
+  make input -orient R90Y -name A14 -origin {6640 520}
+  make input -orient R90Y -name A_bar14 -origin {6680 520}
+  make input -orient R90Y -name B14 -origin {6720 520}
+  make input -orient R90Y -name B_bar14 -origin {6760 520}
+  make input -orient R90Y -name A15 -origin {7090 520}
+  make input -orient R90Y -name A_bar15 -origin {7130 520}
+  make input -orient R90Y -name B15 -origin {7170 520}
+  make input -orient R90Y -name B_bar15 -origin {7210 520}
+  make output -name S10 -origin {5080 440}
+  make output -name S_bar10 -origin {5080 480}
+  make output -name S11 -origin {5530 440}
+  make output -name S_bar11 -origin {5530 480}
+  make output -name S12 -origin {5980 440}
+  make output -name S_bar12 -origin {5980 480}
+  make output -name S13 -origin {6430 440}
+  make output -name S_bar13 -origin {6430 480}
+  make output -name S14 -origin {6880 440}
+  make output -name S_bar14 -origin {6880 480}
+  make output -name S15 -origin {7330 440}
+  make output -name S_bar15 -origin {7330 480}
+  make output -name Cout -origin {7330 360}
+  make output -name Cout_bar -origin {7330 400}
+  make DCN_RP-NOR2 -origin {1070 210}
+  make DCN_SKIP -origin {1070 60}
+  make DCN_RP-NOR3 -origin {800 -180}
+  make DCN_RP-NOR2 -origin {2870 210}
+  make DCN_SKIP -origin {2870 60}
+  make DCN_RP-NOR4 -origin {2420 -180}
+  make DCN_SKIP -origin {2420 -330}
+  make DCN_RP-NOR2 -origin {3780 210}
+  make DCN_SKIP -origin {3780 60}
+  make DCN_RP-NOR2 -origin {4690 210}
+  make DCN_SKIP -origin {4690 60}
+  make DCN_RP-NOR4 -origin {4240 -180}
+  make DCN_SKIP -origin {4240 -330}
+  make DCN_RP-NOR2 -origin {5590 210}
+  make DCN_SKIP -origin {5590 60}
+  make DCN_SKIP -origin {5780 -330}
+  make DCN_RP-NOR3 -origin {5780 -180}
+  make DCN_RP-NOR4 -origin {6040 -570}
+  make DCN_SKIP -origin {6040 -720}
+  make input -orient R90Y -name A0 -origin {310 520}
+  make input -orient R90Y -name A_bar0 -origin {350 520}
+  make input -orient R90Y -name B0 -origin {390 520}
+  make input -orient R90Y -name B_bar0 -origin {430 520}
+  make input -orient R90Y -name A1 -origin {760 520}
+  make input -orient R90Y -name A_bar1 -origin {800 520}
+  make input -orient R90Y -name B1 -origin {840 520}
+  make input -orient R90Y -name B_bar1 -origin {880 520}
+  make input -orient R90Y -name A2 -origin {1210 520}
+  make input -orient R90Y -name A_bar2 -origin {1250 520}
+  make input -orient R90Y -name B2 -origin {1290 520}
+  make input -orient R90Y -name B_bar2 -origin {1330 520}
+  make input -orient R90Y -name A3 -origin {1660 520}
+  make input -orient R90Y -name A_bar3 -origin {1700 520}
+  make input -orient R90Y -name B3 -origin {1740 520}
+  make input -orient R90Y -name B_bar3 -origin {1780 520}
+  make input -orient R90Y -name A4 -origin {2110 520}
+  make input -orient R90Y -name A_bar4 -origin {2150 520}
+  make input -orient R90Y -name B4 -origin {2190 520}
+  make input -orient R90Y -name B_bar4 -origin {2230 520}
+  make input -orient R90Y -name A5 -origin {2560 520}
+  make input -orient R90Y -name A_bar5 -origin {2600 520}
+  make input -orient R90Y -name B5 -origin {2640 520}
+  make input -orient R90Y -name B_bar5 -origin {2680 520}
+  make input -orient R90Y -name A6 -origin {3010 520}
+  make input -orient R90Y -name A_bar6 -origin {3050 520}
+  make input -orient R90Y -name B6 -origin {3090 520}
+  make input -orient R90Y -name B_bar6 -origin {3130 520}
+  make input -orient R90Y -name A7 -origin {3460 520}
+  make input -orient R90Y -name A_bar7 -origin {3500 520}
+  make input -orient R90Y -name B7 -origin {3540 520}
+  make input -orient R90Y -name B_bar7 -origin {3580 520}
+  make input -orient R90Y -name A8 -origin {3940 520}
+  make input -orient R90Y -name A_bar8 -origin {3980 520}
+  make input -orient R90Y -name B8 -origin {4020 520}
+  make input -orient R90Y -name B_bar8 -origin {4060 520}
+  make input -orient R90Y -name A9 -origin {4390 520}
+  make input -orient R90Y -name A_bar9 -origin {4430 520}
+  make input -orient R90Y -name B9 -origin {4470 520}
+  make input -orient R90Y -name B_bar9 -origin {4510 520}
+  make output -name S0 -origin {550 440}
+  make output -name S_bar0 -origin {550 480}
+  make output -name S1 -origin {1000 440}
+  make output -name S_bar1 -origin {1000 480}
+  make output -name S2 -origin {1450 440}
+  make output -name S_bar2 -origin {1450 480}
+  make output -name S3 -origin {1900 440}
+  make output -name S_bar3 -origin {1900 480}
+  make output -name S4 -origin {2350 440}
+  make output -name S_bar4 -origin {2350 480}
+  make output -name S5 -origin {2800 440}
+  make output -name S_bar5 -origin {2800 480}
+  make output -name S6 -origin {3250 440}
+  make output -name S_bar6 -origin {3250 480}
+  make output -name S7 -origin {3700 440}
+  make output -name S_bar7 -origin {3700 480}
+  make output -name S8 -origin {4180 440}
+  make output -name S_bar8 -origin {4180 480}
+  make output -name S9 -origin {4630 440}
+  make output -name S_bar9 -origin {4630 480}
+  make_wire 200 400 230 400
+  make_wire 1000 360 1130 360
+  make_wire 1000 400 1130 400
+  make_wire 2800 360 2930 360
+  make_wire 2800 400 2930 400
+  make_wire 1900 360 2030 360
+  make_wire 1900 400 2030 400
+  make_wire 4630 360 4760 360
+  make_wire 4630 400 4760 400
+  make_wire 5530 360 5660 360
+  make_wire 5530 400 5660 400
+  make_wire 3700 360 3860 360
+  make_wire 3700 400 3860 400
+  make_wire 230 -370 640 -370
+  make_wire 230 -370 230 360
+  make_wire 200 -330 640 -330
+  make_wire 200 -330 200 400
+  make_wire 800 300 1050 300
+  make_wire 840 -90 840 320
+  make_wire 800 -90 800 300
+  make_wire 800 300 800 320
+  make_wire 880 -90 1250 -90
+  make_wire 1090 300 1250 300
+  make_wire 1250 300 1250 -90
+  make_wire 1250 300 1250 320
+  make_wire 350 -90 720 -90
+  make_wire 350 -90 350 320
+  make_wire 760 320 390 320
+  make_wire 760 -90 760 320
+  make_wire 590 20 590 360
+  make_wire 910 60 640 60
+  make_wire 640 400 680 400
+  make_wire 640 60 640 400
+  make_wire 550 400 640 400
+  make_wire 590 20 910 20
+  make_wire 550 360 590 360
+  make_wire 590 360 680 360
+  make_wire 1700 -90 2300 -90
+  make_wire 1700 -90 1700 320
+  make_wire 1740 -50 1740 320
+  make_wire 2340 -50 1740 -50
+  make_wire 2340 -90 2340 -50
+  make_wire 2380 -90 2380 0
+  make_wire 2150 0 2150 320
+  make_wire 2150 0 2380 0
+  make_wire 2190 40 2420 40
+  make_wire 2420 -90 2420 40
+  make_wire 2190 40 2190 320
+  make_wire 3050 -90 2540 -90
+  make_wire 2460 320 2600 320
+  make_wire 2460 320 2460 -90
+  make_wire 2640 280 2500 280
+  make_wire 2500 -90 2500 280
+  make_wire 2640 280 2640 320
+  make_wire 2390 20 2390 360
+  make_wire 2350 360 2390 360
+  make_wire 2480 360 2390 360
+  make_wire 2390 20 2710 20
+  make_wire 2710 60 2440 60
+  make_wire 2440 60 2440 400
+  make_wire 2440 400 2350 400
+  make_wire 2440 400 2480 400
+  make_wire 2850 300 2600 300
+  make_wire 2600 300 2600 320
+  make_wire 2890 300 3050 300
+  make_wire 3050 300 3050 -90
+  make_wire 3050 300 3050 320
+  make_wire 3290 360 3250 360
+  make_wire 3290 360 3380 360
+  make_wire 3250 400 3340 400
+  make_wire 3340 400 3380 400
+  make_wire 3290 20 3290 -370
+  make_wire 3290 20 3290 360
+  make_wire 3340 60 3340 -330
+  make_wire 3340 60 3340 400
+  make_wire 3290 20 3030 20
+  make_wire 3290 20 3620 20
+  make_wire 3340 60 3030 60
+  make_wire 3340 60 3620 60
+  make_wire 4270 60 4270 400
+  make_wire 4220 20 4220 360
+  make_wire 4220 20 3940 20
+  make_wire 4220 20 4530 20
+  make_wire 4220 360 4180 360
+  make_wire 4220 360 4310 360
+  make_wire 4180 400 4270 400
+  make_wire 4310 400 4270 400
+  make_wire 3940 60 4270 60
+  make_wire 4530 60 4270 60
+  make_wire 3500 300 3760 300
+  make_wire 3500 300 3500 320
+  make_wire 3980 300 3800 300
+  make_wire 3980 300 3980 320
+  make_wire 4430 300 4670 300
+  make_wire 4430 300 4430 320
+  make_wire 4880 300 4710 300
+  make_wire 4880 300 4880 320
+  make_wire 3290 -370 2580 -370
+  make_wire 3290 -370 4080 -370
+  make_wire 3340 -330 2580 -330
+  make_wire 3340 -330 4080 -330
+  make_wire 3500 300 3500 -90
+  make_wire 3500 -90 4120 -90
+  make_wire 4160 -50 3540 -50
+  make_wire 4160 -90 4160 -50
+  make_wire 3540 -50 3540 320
+  make_wire 4200 -10 3980 -10
+  make_wire 4200 -90 4200 -10
+  make_wire 3980 -10 3980 300
+  make_wire 4240 30 4020 30
+  make_wire 4240 -90 4240 30
+  make_wire 4020 30 4020 320
+  make_wire 4360 -90 4880 -90
+  make_wire 4880 -90 4880 300
+  make_wire 4280 300 4430 300
+  make_wire 4280 -90 4280 300
+  make_wire 4470 260 4470 320
+  make_wire 4320 -90 4320 260
+  make_wire 4320 260 4470 260
+  make_wire 5120 360 5080 360
+  make_wire 5120 360 5210 360
+  make_wire 5170 400 5080 400
+  make_wire 5170 400 5210 400
+  make_wire 5120 20 5120 360
+  make_wire 5170 60 5170 400
+  make_wire 5570 300 5330 300
+  make_wire 5610 300 5780 300
+  make_wire 5120 20 4850 20
+  make_wire 5120 20 5430 20
+  make_wire 5170 60 4850 60
+  make_wire 5170 60 5430 60
+  make_wire 5750 20 6020 20
+  make_wire 5750 60 6070 60
+  make_wire 6020 360 6020 20
+  make_wire 6020 360 5980 360
+  make_wire 6020 360 6110 360
+  make_wire 6070 400 5980 400
+  make_wire 6070 400 6110 400
+  make_wire 1230 60 1540 60
+  make_wire 1230 20 1490 20
+  make_wire 1490 -370 1490 20
+  make_wire 1490 -370 2260 -370
+  make_wire 1490 -370 960 -370
+  make_wire 1540 60 1540 -330
+  make_wire 1540 -330 2260 -330
+  make_wire 1540 -330 960 -330
+  make_wire 5120 -370 4400 -370
+  make_wire 5120 -370 5620 -370
+  make_wire 5170 -330 4400 -330
+  make_wire 5170 -330 5620 -330
+  make_wire 5700 -90 5330 -90
+  make_wire 5330 -90 5330 300
+  make_wire 5330 300 5330 320
+  make_wire 5740 -50 5370 -50
+  make_wire 5740 -90 5740 -50
+  make_wire 5370 -50 5370 320
+  make_wire 5780 300 5780 320
+  make_wire 6230 -90 6230 320
+  make_wire 5940 -370 6470 -370
+  make_wire 6470 360 6470 -370
+  make_wire 6470 360 6430 360
+  make_wire 6470 360 6560 360
+  make_wire 6520 400 6430 400
+  make_wire 6520 400 6560 400
+  make_wire 6520 -330 5940 -330
+  make_wire 6520 -330 6520 400
+  make_wire 6070 60 6070 400
+  make_wire 5920 -480 5330 -480
+  make_wire 5330 -90 5330 -480
+  make_wire 5120 -760 5120 -370
+  make_wire 5120 -760 5880 -760
+  make_wire 5120 20 5120 -370
+  make_wire 5170 -720 5880 -720
+  make_wire 5170 -720 5170 -330
+  make_wire 5170 -330 5170 60
+  make_wire 5370 -50 5370 -440
+  make_wire 5370 -440 5960 -440
+  make_wire 5960 -480 5960 -440
+  make_wire 6000 100 5780 100
+  make_wire 6000 -480 6000 100
+  make_wire 5780 100 5780 -90
+  make_wire 5780 100 5780 300
+  make_wire 6040 140 5820 140
+  make_wire 6040 -480 6040 140
+  make_wire 5820 140 5820 -90
+  make_wire 5820 140 5820 320
+  make_wire 6080 -480 6080 -90
+  make_wire 6080 -90 6230 -90
+  make_wire 6080 -90 5860 -90
+  make_wire 6120 -480 6120 -130
+  make_wire 6120 -130 6270 -130
+  make_wire 6270 -130 6270 320
+  make_wire 6680 -480 6160 -480
+  make_wire 6680 -480 6680 320
+  make_wire 6920 360 6920 -760
+  make_wire 6920 360 6880 360
+  make_wire 6920 360 7010 360
+  make_wire 6920 -760 6200 -760
+  make_wire 6970 400 6880 400
+  make_wire 6970 400 7010 400
+  make_wire 6970 -720 6200 -720
+  make_wire 6970 -720 6970 400
+  make_wire 1490 20 1490 360
+  make_wire 1490 360 1450 360
+  make_wire 1490 360 1580 360
+  make_wire 1540 60 1540 400
+  make_wire 1540 400 1450 400
+  make_wire 1540 400 1580 400
+}
+

@@ -1,0 +1,49 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_DCN_XOR {} {
+  make nmos -orient R90 -origin {340 380}
+  make nmos -orient R90 -origin {340 500}
+  make nmos -orient R90 -origin {510 350}
+  make nmos -orient R90 -origin {510 470}
+  make input -name Cin -origin {290 380}
+  make input -name Cin_bar -origin {300 500}
+  make input -orient R90 -name P_bar -origin {340 320}
+  make input -orient R90 -name P -origin {510 290}
+  make output -name S -origin {550 380}
+  make output -name S_bar -origin {550 500}
+  make_wire 300 410 300 500
+  make_wire 380 500 550 500
+  make_wire 550 470 550 500
+  make_wire 470 420 290 420
+  make_wire 470 420 470 470
+  make_wire 290 380 290 420
+  make_wire 300 380 290 380
+  make_wire 340 320 340 440
+  make_wire 470 350 470 410
+  make_wire 300 410 470 410
+  make_wire 380 380 550 380
+  make_wire 510 290 510 410
+  make_wire 550 350 550 380
+}
+
+proc ICON_DCN_XOR args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {-150 -40} -name Cin
+  icon_term -type input -origin {-150 0} -name Cin_bar
+  icon_term -type output -origin {150 -40} -name S
+  icon_term -type output -origin {150 0} -name S_bar
+  icon_term -type input -origin {-40 90} -orient R90Y -name P_bar
+  icon_term -type input -origin {0 90} -orient R90Y -name P
+  icon_property -origin {0 0} -size large -anchor center -label DCN_XOR
+  icon_line -150 -90 150 -90 150 90 -150 90 -150 -90
+  icon_property -origin {-140 -40} -label Cin
+  icon_property -origin {-140 0} -label Cin_bar
+  icon_property -origin {140 -40} -anchor e -label S
+  icon_property -origin {140 0} -anchor e -label S_bar
+  icon_property -origin {-40 80} -anchor e -rotate 1 -label P_bar
+  icon_property -origin {0 80} -anchor e -rotate 1 -label P
+  icon_property -origin {-150 310} -type user -name name
+  icon_property -origin {-150 330} -type user -name M
+  icon_property -origin {-150 350} -type user -name dpc
+}
+

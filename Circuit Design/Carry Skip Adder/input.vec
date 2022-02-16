@@ -1,0 +1,23 @@
+radix 1 1 4444 4444 4444 4444 1 1 4444 4444
+
+vname Cin Cin_bar A[15:0] A_bar[15:0] B[15:0] B_bar[15:0] Cout Cout_bar S[15:0] S_bar[15:0]
+
+io i i iiii iiii iiii iiii o o oooo oooo
+
+tunit ns
+
+tdelay 1.0
+
+vih 1.2
+vil 0
+vref 0
+vth 0.6
+voh 1.0
+vol 0.1
+
+000 0 1 0000 FFFF 0000 FFFF 0 0 0000 0000
+100 0 1 FFFF 0000 0000 FFFF 0 0 0000 0000
+300 1 0 FFFF 0000 0000 FFFF 0 0 0000 0000
+500 0 1 0123 FEDC 4567 BA98 0 0 0000 0000
+700 0 1 89AB 7654 CDEF 3210 0 0 0000 0000
+900 0 1 89AB 7654 4DEF B210 0 0 0000 0000

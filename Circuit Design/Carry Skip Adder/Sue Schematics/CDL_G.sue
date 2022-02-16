@@ -1,0 +1,83 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_CDL_G {} {
+  make pmos -origin {450 370}
+  make pmos -origin {890 450}
+  make nmos -origin {890 530}
+  make input -name Clk -origin {390 370}
+  make input -name A -origin {390 450}
+  make input -name B -origin {390 530}
+  make output -name G -origin {890 490}
+  make pmos -origin {640 350}
+  make nmos -origin {600 490}
+  make nmos -orient RX -origin {680 490}
+  make global -orient RY -name VDD -origin {640 290}
+  make pmos -origin {1010 350}
+  make nmos -origin {1010 430}
+  make input -name Clk -origin {580 350}
+  make input -name A_bar -origin {540 490}
+  make input -orient RX -name B_bar -origin {740 490}
+  make output -name G_bar -origin {1010 390}
+  make global -name GND -origin {450 570}
+  make pmos -W 1 -origin {760 330}
+  make pmos -orient RX -W 1 -origin {820 330}
+  make nmos -W 2 -origin {450 450}
+  make nmos -W 2 -origin {450 530}
+  make_wire 600 450 640 450
+  make_wire 640 450 680 450
+  make_wire 450 290 640 290
+  make_wire 830 450 830 530
+  make_wire 880 330 880 390
+  make_wire 880 390 950 390
+  make_wire 830 410 830 450
+  make_wire 820 370 820 410
+  make_wire 820 410 830 410
+  make_wire 820 290 760 290
+  make_wire 640 390 640 450
+  make_wire 640 530 640 570
+  make_wire 600 530 640 530
+  make_wire 640 570 450 570
+  make_wire 640 570 890 570
+  make_wire 680 530 640 530
+  make_wire 700 330 700 410
+  make_wire 700 410 820 410
+  make_wire 700 410 450 410
+  make_wire 760 370 760 390
+  make_wire 760 390 880 390
+  make_wire 760 390 640 390
+  make_wire 890 290 820 290
+  make_wire 450 290 450 330
+  make_wire 640 290 640 310
+  make_wire 760 290 640 290
+  make_wire 1010 470 1010 570
+  make_wire 890 570 1010 570
+  make_wire 890 290 1010 290
+  make_wire 950 350 950 390
+  make_wire 950 390 950 430
+  make_wire 1010 290 1010 310
+  make_wire 890 410 890 290
+}
+
+proc ICON_CDL_G args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {0 100} -orient R90Y -name Clk
+  icon_term -type input -origin {-110 -80} -name A
+  icon_term -type input -origin {-110 -40} -name A_bar
+  icon_term -type input -origin {-110 0} -name B
+  icon_term -type output -origin {-40 -100} -orient R90Y -name G_bar
+  icon_term -type input -origin {-110 40} -name B_bar
+  icon_term -type output -origin {0 -100} -orient R90Y -name G
+  icon_property -origin {0 0} -size large -anchor center -label CDL_G
+  icon_line -110 -100 110 -100 110 100 -110 100 -110 -100
+  icon_property -origin {0 90} -anchor e -rotate 1 -label Clk
+  icon_property -origin {-100 -80} -label A
+  icon_property -origin {-100 -40} -label A_bar
+  icon_property -origin {-100 0} -label B
+  icon_property -origin {-40 -90} -rotate 1 -label G_bar
+  icon_property -origin {-100 40} -label B_bar
+  icon_property -origin {0 -90} -rotate 1 -label G
+  icon_property -origin {-110 320} -type user -name name
+  icon_property -origin {-110 340} -type user -name M
+  icon_property -origin {-110 360} -type user -name dpc
+}
+

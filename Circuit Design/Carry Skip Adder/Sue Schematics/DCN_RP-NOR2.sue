@@ -1,0 +1,35 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_DCN_RP-NOR2 {} {
+  make nmos -orient RX -origin {680 570}
+  make output -name GP -origin {680 530}
+  make pmos -orient RX -W 4 -origin {680 490}
+  make pmos -W 4 -origin {680 410}
+  make global -name GND -origin {680 610}
+  make global -orient RY -name VDD -origin {680 370}
+  make nmos -origin {600 570}
+  make input -name A_bar -origin {620 410}
+  make input -name A_bar -origin {540 570}
+  make input -orient RX -name B_bar -origin {760 570}
+  make_wire 760 490 760 570
+  make_wire 740 490 760 490
+  make_wire 740 570 760 570
+  make_wire 600 530 680 530
+  make_wire 600 610 680 610
+}
+
+proc ICON_DCN_RP-NOR2 args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {-20 90} -orient R90Y -name A_bar
+  icon_term -type output -origin {0 -90} -orient R90Y -name GP
+  icon_term -type input -origin {20 90} -orient R90Y -name B_bar
+  icon_property -origin {0 0} -size large -anchor center -label DCN_RP-NOR2
+  icon_line -90 -90 90 -90 90 90 -90 90 -90 -90
+  icon_property -origin {-20 80} -anchor e -rotate 1 -label A_bar
+  icon_property -origin {0 -80} -rotate 1 -label GP
+  icon_property -origin {20 80} -anchor e -rotate 1 -label B_bar
+  icon_property -origin {-90 310} -type user -name name
+  icon_property -origin {-90 330} -type user -name M
+  icon_property -origin {-90 350} -type user -name dpc
+}
+

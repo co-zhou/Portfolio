@@ -1,0 +1,76 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_DCN_RP-NOR4 {} {
+  make nmos -origin {290 490}
+  make nmos -origin {480 490}
+  make nmos -orient RX -origin {540 490}
+  make nmos -orient RX -origin {730 490}
+  make input -name A_bar -origin {230 490}
+  make input -name B_bar -origin {420 490}
+  make input -orient RX -name C_bar -origin {600 490}
+  make input -orient RX -name D_bar -origin {810 490}
+  make output -name GP -origin {730 450}
+  make pmos -orient RX -W 4 -origin {730 410}
+  make pmos -W 4 -origin {730 190}
+  make global -name GND -origin {730 530}
+  make global -orient RY -name VDD -origin {730 110}
+  make nmos -W 3 -origin {620 230}
+  make nmos -W 3 -origin {620 310}
+  make nmos -W 3 -origin {620 390}
+  make pmos -origin {620 150}
+  make pmos -origin {470 150}
+  make pmos -origin {320 150}
+  make input -name B -origin {410 150}
+  make input -name C -origin {560 150}
+  make input -name A -origin {260 150}
+  make_wire 480 530 540 530
+  make_wire 480 530 290 530
+  make_wire 480 450 540 450
+  make_wire 480 450 290 450
+  make_wire 810 410 810 490
+  make_wire 790 410 810 410
+  make_wire 790 490 810 490
+  make_wire 410 150 410 310
+  make_wire 260 150 260 390
+  make_wire 560 150 560 230
+  make_wire 260 390 560 390
+  make_wire 320 190 470 190
+  make_wire 470 190 620 190
+  make_wire 320 110 470 110
+  make_wire 470 110 620 110
+  make_wire 410 310 560 310
+  make_wire 540 450 730 450
+  make_wire 730 230 730 370
+  make_wire 730 110 620 110
+  make_wire 730 110 730 150
+  make_wire 670 190 620 190
+  make_wire 620 430 620 530
+  make_wire 620 530 540 530
+  make_wire 620 530 730 530
+}
+
+proc ICON_DCN_RP-NOR4 args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {-80 90} -orient R90Y -name A
+  icon_term -type input -origin {0 90} -orient R90Y -name B
+  icon_term -type input -origin {80 90} -orient R90Y -name C
+  icon_term -type input -origin {-120 90} -orient R90Y -name A_bar
+  icon_term -type input -origin {-40 90} -orient R90Y -name B_bar
+  icon_term -type output -origin {0 -90} -orient R90Y -name GP
+  icon_term -type input -origin {40 90} -orient R90Y -name C_bar
+  icon_term -type input -origin {120 90} -orient R90Y -name D_bar
+  icon_property -origin {0 0} -size large -anchor center -label DCN_RP-NOR4
+  icon_line -180 -90 180 -90 180 90 -180 90 -180 -90
+  icon_property -origin {-80 80} -anchor e -rotate 1 -label A
+  icon_property -origin {0 80} -anchor e -rotate 1 -label B
+  icon_property -origin {80 80} -anchor e -rotate 1 -label C
+  icon_property -origin {-120 80} -anchor e -rotate 1 -label A_bar
+  icon_property -origin {-40 80} -anchor e -rotate 1 -label B_bar
+  icon_property -origin {0 -80} -rotate 1 -label GP
+  icon_property -origin {40 80} -anchor e -rotate 1 -label C_bar
+  icon_property -origin {120 80} -anchor e -rotate 1 -label D_bar
+  icon_property -origin {-180 310} -type user -name name
+  icon_property -origin {-180 330} -type user -name M
+  icon_property -origin {-180 350} -type user -name dpc
+}
+

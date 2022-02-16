@@ -1,0 +1,46 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_SA {} {
+  make pmos -origin {480 230}
+  make pmos -origin {400 310}
+  make pmos -orient RX -origin {560 310}
+  make nmos -origin {560 410}
+  make nmos -orient RX -origin {400 410}
+  make global -name GND -origin {480 450}
+  make global -orient RY -name VDD -origin {480 190}
+  make input -name In_bar -origin {340 310}
+  make input -orient RX -name In -origin {620 310}
+  make input -name Clk -origin {420 230}
+  make output -orient RX -name Out -origin {400 370}
+  make output -name Out_bar -origin {560 370}
+  make_wire 400 350 400 370
+  make_wire 560 350 560 370
+  make_wire 400 270 480 270
+  make_wire 500 370 500 410
+  make_wire 400 370 500 370
+  make_wire 460 350 560 350
+  make_wire 460 350 460 410
+  make_wire 480 270 560 270
+  make_wire 400 450 480 450
+  make_wire 480 450 560 450
+}
+
+proc ICON_SA args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {0 70} -orient R90Y -name Clk
+  icon_term -type input -origin {-110 0} -name In_bar
+  icon_term -type output -origin {110 -40} -name Out
+  icon_term -type input -origin {-110 -40} -name In
+  icon_term -type output -origin {110 0} -name Out_bar
+  icon_property -origin {0 0} -size large -anchor center -label SA
+  icon_line -110 -70 110 -70 110 70 -110 70 -110 -70
+  icon_property -origin {0 60} -anchor e -rotate 1 -label Clk
+  icon_property -origin {-100 0} -label In_bar
+  icon_property -origin {100 -40} -anchor e -label Out
+  icon_property -origin {-100 -40} -label In
+  icon_property -origin {100 0} -anchor e -label Out_bar
+  icon_property -origin {-110 290} -type user -name name
+  icon_property -origin {-110 310} -type user -name M
+  icon_property -origin {-110 330} -type user -name dpc
+}
+

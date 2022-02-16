@@ -1,0 +1,61 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_DCN_RP-NOR3 {} {
+  make nmos -origin {430 570}
+  make nmos -orient RX -origin {490 570}
+  make nmos -orient RX -origin {680 570}
+  make output -name GP -origin {680 530}
+  make pmos -orient RX -W 4 -origin {680 490}
+  make pmos -W 4 -origin {680 360}
+  make global -name GND -origin {680 610}
+  make global -orient RY -name VDD -origin {680 280}
+  make pmos -origin {570 320}
+  make pmos -origin {420 320}
+  make nmos -W 2 -origin {570 480}
+  make nmos -W 2 -origin {570 400}
+  make input -name A -origin {360 320}
+  make input -name B -origin {510 320}
+  make input -name A_bar -origin {370 570}
+  make input -orient RX -name B_bar -origin {550 570}
+  make input -orient RX -name C_bar -origin {760 570}
+  make_wire 430 610 490 610
+  make_wire 430 530 490 530
+  make_wire 760 490 760 570
+  make_wire 740 490 760 490
+  make_wire 740 570 760 570
+  make_wire 360 320 360 480
+  make_wire 510 320 510 400
+  make_wire 420 360 570 360
+  make_wire 420 280 570 280
+  make_wire 360 480 510 480
+  make_wire 490 530 680 530
+  make_wire 680 280 570 280
+  make_wire 680 280 680 320
+  make_wire 620 360 570 360
+  make_wire 570 520 570 610
+  make_wire 570 610 490 610
+  make_wire 570 610 680 610
+  make_wire 680 400 680 450
+}
+
+proc ICON_DCN_RP-NOR3 args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {-40 90} -orient R90Y -name A
+  icon_term -type input -origin {40 90} -orient R90Y -name B
+  icon_term -type input -origin {-80 90} -orient R90Y -name A_bar
+  icon_term -type output -origin {0 -90} -orient R90Y -name GP
+  icon_term -type input -origin {0 90} -orient R90Y -name B_bar
+  icon_term -type input -origin {80 90} -orient R90Y -name C_bar
+  icon_property -origin {0 0} -size large -anchor center -label DCN_RP-NOR3
+  icon_line -140 -90 140 -90 140 90 -140 90 -140 -90
+  icon_property -origin {-40 80} -anchor e -rotate 1 -label A
+  icon_property -origin {40 80} -anchor e -rotate 1 -label B
+  icon_property -origin {-80 80} -anchor e -rotate 1 -label A_bar
+  icon_property -origin {0 -80} -rotate 1 -label GP
+  icon_property -origin {0 80} -anchor e -rotate 1 -label B_bar
+  icon_property -origin {80 80} -anchor e -rotate 1 -label C_bar
+  icon_property -origin {-140 310} -type user -name name
+  icon_property -origin {-140 330} -type user -name M
+  icon_property -origin {-140 350} -type user -name dpc
+}
+

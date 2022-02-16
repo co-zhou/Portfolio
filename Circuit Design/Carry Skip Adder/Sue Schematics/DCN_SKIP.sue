@@ -1,0 +1,32 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_DCN_SKIP {} {
+  make nmos -orient R90 -origin {460 370}
+  make nmos -orient R90 -origin {460 470}
+  make input -name Cin -origin {420 370}
+  make input -name Cin_bar -origin {420 470}
+  make output -name Cout -origin {500 370}
+  make output -name Cout_bar -origin {500 470}
+  make input -orient R90 -name GP -origin {460 310}
+  make_wire 460 310 460 410
+}
+
+proc ICON_DCN_SKIP args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {-160 -40} -name Cin
+  icon_term -type input -origin {-160 0} -name Cin_bar
+  icon_term -type output -origin {160 -40} -name Cout
+  icon_term -type output -origin {160 0} -name Cout_bar
+  icon_term -type input -origin {0 60} -orient R90Y -name GP
+  icon_property -origin {0 0} -size large -anchor center -label DCN_SKIP
+  icon_line -160 -60 160 -60 160 60 -160 60 -160 -60
+  icon_property -origin {-150 -40} -label Cin
+  icon_property -origin {-150 0} -label Cin_bar
+  icon_property -origin {150 -40} -anchor e -label Cout
+  icon_property -origin {150 0} -anchor e -label Cout_bar
+  icon_property -origin {0 50} -anchor e -rotate 1 -label GP
+  icon_property -origin {-160 280} -type user -name name
+  icon_property -origin {-160 300} -type user -name M
+  icon_property -origin {-160 320} -type user -name dpc
+}
+

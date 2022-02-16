@@ -1,0 +1,57 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_DCN_PGK {} {
+  make nmos -origin {470 440}
+  make nmos -orient R90 -origin {400 400}
+  make nmos -orient R90 -origin {400 580}
+  make nmos -origin {440 620}
+  make pmos -origin {600 360}
+  make pmos -origin {590 540}
+  make input -name Cin -origin {360 400}
+  make input -name Cin_bar -origin {360 580}
+  make input -name G -origin {380 620}
+  make input -name K -origin {410 440}
+  make input -name G_bar -origin {540 360}
+  make input -name K_bar -origin {530 540}
+  make input -orient R90 -name P -origin {400 340}
+  make global -orient RY -name VDD -origin {600 320}
+  make global -name GND -origin {470 660}
+  make output -name Cout -origin {600 400}
+  make output -name Cout_bar -origin {590 580}
+  make_wire 590 580 440 580
+  make_wire 440 400 470 400
+  make_wire 470 400 600 400
+  make_wire 400 340 400 520
+  make_wire 470 480 470 660
+  make_wire 440 660 470 660
+  make_wire 590 320 600 320
+  make_wire 590 320 590 500
+}
+
+proc ICON_DCN_PGK args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {-40 90} -orient R90Y -name G_bar
+  icon_term -type input -origin {-160 -40} -name Cin
+  icon_term -type input -origin {80 90} -orient R90Y -name K
+  icon_term -type input -origin {40 90} -orient R90Y -name K_bar
+  icon_term -type input -origin {-160 0} -name Cin_bar
+  icon_term -type input -origin {0 90} -orient R90Y -name G
+  icon_term -type output -origin {160 -40} -name Cout
+  icon_term -type output -origin {160 0} -name Cout_bar
+  icon_term -type input -origin {-80 90} -orient R90Y -name P
+  icon_property -origin {0 0} -size large -anchor center -label DCN_PGK
+  icon_line -160 -90 160 -90 160 90 -160 90 -160 -90
+  icon_property -origin {-40 80} -anchor e -rotate 1 -label G_bar
+  icon_property -origin {-150 -40} -label Cin
+  icon_property -origin {80 80} -anchor e -rotate 1 -label K
+  icon_property -origin {40 80} -anchor e -rotate 1 -label K_bar
+  icon_property -origin {-150 0} -label Cin_bar
+  icon_property -origin {0 80} -anchor e -rotate 1 -label G
+  icon_property -origin {150 -40} -anchor e -label Cout
+  icon_property -origin {150 0} -anchor e -label Cout_bar
+  icon_property -origin {-80 80} -anchor e -rotate 1 -label P
+  icon_property -origin {-160 310} -type user -name name
+  icon_property -origin {-160 330} -type user -name M
+  icon_property -origin {-160 350} -type user -name dpc
+}
+

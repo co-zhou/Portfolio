@@ -1,0 +1,95 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_CDL_P {} {
+  make pmos -origin {0 340}
+  make pmos -origin {660 420}
+  make nmos -origin {660 500}
+  make input -name Clk -origin {-60 340}
+  make input -name A -origin {-110 420}
+  make pmos -origin {330 320}
+  make global -orient RY -name VDD -origin {330 260}
+  make pmos -origin {770 320}
+  make nmos -origin {770 400}
+  make input -name Clk -origin {270 320}
+  make global -name GND -origin {330 550}
+  make pmos -W 1 -origin {520 300}
+  make pmos -orient RX -W 1 -origin {590 300}
+  make nmos -W 2 -origin {-50 420}
+  make nmos -W 2 -origin {-50 500}
+  make output -name P -origin {660 460}
+  make output -name P_bar -origin {770 360}
+  make nmos -orient RX -W 2 -origin {50 500}
+  make input -orient RX -name B -origin {110 500}
+  make nmos -orient RX -W 2 -origin {50 420}
+  make input -name B_bar -origin {-110 500}
+  make input -orient RX -name A_bar -origin {110 420}
+  make input -name A -origin {270 430}
+  make nmos -W 2 -origin {330 430}
+  make nmos -W 2 -origin {330 510}
+  make nmos -orient RX -W 2 -origin {430 510}
+  make nmos -orient RX -W 2 -origin {430 430}
+  make input -orient RX -name A_bar -origin {490 430}
+  make input -name B -origin {270 510}
+  make input -orient RX -name B_bar -origin {490 510}
+  make_wire 520 340 520 360
+  make_wire 0 260 0 300
+  make_wire 710 320 710 360
+  make_wire 710 360 710 400
+  make_wire 770 260 770 280
+  make_wire -50 550 50 550
+  make_wire -50 380 0 380
+  make_wire -50 540 -50 550
+  make_wire 50 540 50 550
+  make_wire 0 380 50 380
+  make_wire 600 380 600 420
+  make_wire 600 420 600 500
+  make_wire 330 260 330 280
+  make_wire 330 260 0 260
+  make_wire 330 360 330 390
+  make_wire 430 360 430 390
+  make_wire 430 360 330 360
+  make_wire 430 360 520 360
+  make_wire 50 380 460 380
+  make_wire 460 380 590 380
+  make_wire 590 380 600 380
+  make_wire 660 260 770 260
+  make_wire 430 550 660 550
+  make_wire 660 550 770 550
+  make_wire 770 440 770 550
+  make_wire 460 300 460 380
+  make_wire 660 260 660 380
+  make_wire 660 540 660 550
+  make_wire 520 260 590 260
+  make_wire 590 260 660 260
+  make_wire 590 340 590 380
+  make_wire 650 300 650 360
+  make_wire 650 360 710 360
+  make_wire 520 360 650 360
+  make_wire 330 550 50 550
+  make_wire 330 550 430 550
+  make_wire 520 260 330 260
+}
+
+proc ICON_CDL_P args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {0 100} -orient R90Y -name Clk
+  icon_term -type input -origin {-110 -80} -name A
+  icon_term -type input -origin {-110 0} -name B
+  icon_term -type output -origin {-40 -100} -orient R90Y -name P_bar
+  icon_term -type input -origin {-110 -40} -name A_bar
+  icon_term -type output -origin {0 -100} -orient R90Y -name P
+  icon_term -type input -origin {-110 40} -name B_bar
+  icon_property -origin {0 0} -size large -anchor center -label CDL_P
+  icon_line -110 -100 110 -100 110 100 -110 100 -110 -100
+  icon_property -origin {0 90} -anchor e -rotate 1 -label Clk
+  icon_property -origin {-100 -80} -label A
+  icon_property -origin {-100 0} -label B
+  icon_property -origin {-40 -90} -rotate 1 -label P_bar
+  icon_property -origin {-100 -40} -label A_bar
+  icon_property -origin {0 -90} -rotate 1 -label P
+  icon_property -origin {-100 40} -label B_bar
+  icon_property -origin {-110 320} -type user -name name
+  icon_property -origin {-110 340} -type user -name M
+  icon_property -origin {-110 360} -type user -name dpc
+}
+

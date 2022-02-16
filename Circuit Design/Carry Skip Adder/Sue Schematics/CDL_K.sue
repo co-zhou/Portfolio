@@ -1,0 +1,82 @@
+# SUE version MMI_SUE5.6.29
+
+proc SCHEMATIC_CDL_K {} {
+  make pmos -origin {230 360}
+  make pmos -origin {670 440}
+  make nmos -origin {670 520}
+  make input -name Clk -origin {170 360}
+  make pmos -origin {420 340}
+  make nmos -origin {380 480}
+  make nmos -orient RX -origin {460 480}
+  make global -name GND -origin {230 560}
+  make global -orient RY -name VDD -origin {420 280}
+  make pmos -origin {790 320}
+  make nmos -origin {790 400}
+  make input -name Clk -origin {360 340}
+  make input -name A -origin {320 480}
+  make input -orient RX -name B -origin {520 480}
+  make input -name A_bar -origin {170 440}
+  make input -name B_bar -origin {170 520}
+  make pmos -W 1 -origin {540 320}
+  make pmos -orient RX -W 1 -origin {600 320}
+  make nmos -W 2 -origin {230 440}
+  make nmos -W 2 -origin {230 520}
+  make output -name K_bar -origin {790 360}
+  make output -name K -origin {670 480}
+  make_wire 380 440 420 440
+  make_wire 420 440 460 440
+  make_wire 230 280 420 280
+  make_wire 610 440 610 520
+  make_wire 660 320 660 380
+  make_wire 660 380 730 380
+  make_wire 610 400 610 440
+  make_wire 600 360 600 400
+  make_wire 600 400 610 400
+  make_wire 730 320 730 380
+  make_wire 730 380 730 400
+  make_wire 540 280 420 280
+  make_wire 600 280 540 280
+  make_wire 420 380 420 440
+  make_wire 420 520 420 560
+  make_wire 380 520 420 520
+  make_wire 420 560 230 560
+  make_wire 420 560 670 560
+  make_wire 460 520 420 520
+  make_wire 670 280 670 400
+  make_wire 670 280 600 280
+  make_wire 670 280 790 280
+  make_wire 790 560 670 560
+  make_wire 790 440 790 560
+  make_wire 230 280 230 320
+  make_wire 480 320 480 400
+  make_wire 480 400 600 400
+  make_wire 480 400 230 400
+  make_wire 540 360 540 380
+  make_wire 540 380 660 380
+  make_wire 540 380 420 380
+  make_wire 420 280 420 300
+}
+
+proc ICON_CDL_K args {
+  icon_setup $args {{origin {0 0}} {orient R0} {name {}} {M {}} {dpc {}}}
+  icon_term -type input -origin {0 100} -orient R90Y -name Clk
+  icon_term -type input -origin {-110 -40} -name A_bar
+  icon_term -type input -origin {-110 -80} -name A
+  icon_term -type input -origin {-110 40} -name B_bar
+  icon_term -type output -origin {-40 -100} -orient R90Y -name K_bar
+  icon_term -type input -origin {-110 0} -name B
+  icon_term -type output -origin {0 -100} -orient R90Y -name K
+  icon_property -origin {0 0} -size large -anchor center -label CDL_K
+  icon_line -110 -100 110 -100 110 100 -110 100 -110 -100
+  icon_property -origin {0 90} -anchor e -rotate 1 -label Clk
+  icon_property -origin {-100 -40} -label A_bar
+  icon_property -origin {-100 -80} -label A
+  icon_property -origin {-100 40} -label B_bar
+  icon_property -origin {-40 -90} -rotate 1 -label K_bar
+  icon_property -origin {-100 0} -label B
+  icon_property -origin {0 -90} -rotate 1 -label K
+  icon_property -origin {-110 320} -type user -name name
+  icon_property -origin {-110 340} -type user -name M
+  icon_property -origin {-110 360} -type user -name dpc
+}
+
