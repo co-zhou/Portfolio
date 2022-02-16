@@ -1,8 +1,8 @@
 # About Me
 <img align="right" width="170" height="220" src="https://user-images.githubusercontent.com/95654612/148268886-b29e96f8-a525-4616-b808-6bfdf072a633.JPEG">
-I am a recent graduate of University of California Santa Barbara with a bachelor's degree in computer engineering. I have over five years experience in computer programming mainly in C++ and Python, but also with Java. My ability to collaborate with others to complete a large project is seen through the published CK-12 textbooks and my Capstone project. These projects also taught me how to work remotely and how to create a product that ensures quality for the user. These projects had their own editors, APIs, and interfaces, so I was able to learn very quickly and produce results within the first month.
+I am a recent graduate of University of California Santa Barbara with a bachelor's degree in computer engineering. I have over five years experience in computer programming mainly in C++ and Python with a focus on AI/Machine Learning, but also with Java/Javascript. My ability to collaborate with others to complete a large project is seen through the published CK-12 textbooks and my Capstone project. These projects also taught me how to work remotely and how to create a product that ensures quality for the user. These projects had their own editors, APIs, and interfaces, so I was able to learn very quickly and produce results within the first month.
 
-Contact me at coreyzh@gmail.com if you are interested.
+My other main focus in school is digital circuit design. I have taken many classes ranging from computer architecture to digital design test verification and automation and VLSI design. I have created complicated systems including pipelined processors in Verilog and VLSI circuits modeled as a SUE schematic, then simulated through HSpice. Contact me at coreyzh@gmail.com if you are interested.
 
 # Math Interactives Internship, CK-12 Foundation
 Summer 2018 - Summer 2019
