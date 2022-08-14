@@ -1,4 +1,5 @@
 This demo only uses the Epic Games starter content to showcase first person movement and interaction with other actors (door, statue).
+The project is only cooked for Windows.
 
 Run TestProject.exe with all the other files inside this folder
 
