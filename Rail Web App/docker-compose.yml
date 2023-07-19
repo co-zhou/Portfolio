@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # Flask Application Service
+  app:
+    # Flask Application Dockerfile Location
+    build:
+      context: app
+    command: python3 wsgi.py
+    ports:
+      # Flask Application Host Port
+      - '5000:5000'
+    depends_on:
+      init:
+        condition: service_completed_successfully
+
+
+  # Initialize DB Tables
+  init:
+    # init Dockerfile Location
+    build:
+      context: init
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+
+  db:
+    image: mysql:latest
+    container_name: mydb
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'rail'      
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '32001:3306'
+    volumes:
+      - mysql-db:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h localhost
+      timeout: 5s
+      retries: 100
+
+
+volumes:
+  mysql-db:
