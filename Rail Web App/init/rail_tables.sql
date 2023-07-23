@@ -5,7 +5,9 @@ USE rail;
 CREATE TABLE users (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	first_name VARCHAR(255) NOT NULL,
-	last_name VARCHAR(255) NOT NULL
+	last_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(60) CHARACTER SET ascii COLLATE ascii_bin NOT NULL
 );
 
 CREATE TABLE locations (
@@ -33,29 +35,10 @@ CREATE TABLE user_routes (
 	FOREIGN KEY (route_id) REFERENCES routes(id)
 );
 
-
-CREATE VIEW view_all_users AS
-SELECT
-	users.id AS No,
-  CONCAT(first_name, ' ', last_name) AS Name,
-  IFNULL(departure.location_name, 'N/A') AS Departure,
-  IFNULL(arrival.location_name, 'N/A') AS Arrival,
-  IFNULL(departure_datetime, 'N/A') AS 'Departure Time',
-  IFNULL(arrival_datetime, 'N/A') AS 'Arrival Time',
-  IFNULL(price, 0.00) AS Price
-FROM users
-LEFT JOIN user_routes
-  ON users.id = user_routes.user_id
-LEFT JOIN routes
-  ON routes.id = user_routes.route_id
-LEFT JOIN locations AS departure
-  ON routes.departure_id = departure.id
-LEFT JOIN locations AS arrival
-  ON routes.arrival_id = arrival.id;
-
 CREATE VIEW view_all_routes AS
 SELECT
-  routes.id AS No,
+  routes.id AS `Route No.`,
+  users.id AS `User No.`,
   departure.location_name AS Departure,
   arrival.location_name AS Arrival,
   CONCAT(first_name, ' ', last_name) AS Name,

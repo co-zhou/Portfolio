@@ -1,7 +1,15 @@
-from flask import Flask, render_template, request, redirect, url_for
-from mysql.connector import connect, Error
+# MAIN APP IMPLEMENTATION
 
+from flask import Flask, render_template, request, redirect, url_for, session
+from mysql.connector import connect, Error
+import bcrypt
+import re
+
+# Global Flask App Initialization
 app = Flask(__name__)
+app.secret_key = 'secret key'
+
+# Global MYSQL connection and cursor
 try:
     connection = connect(host = "mydb",
                          user = "root",
@@ -12,6 +20,10 @@ except Error as e:
 
 cursor = connection.cursor()
 
+
+# SELECT QUERY
+# Input: Valid sql select query string
+# Output: List of tuples first element column names
 def select(selectQuery):
     try:
         cursor.execute(selectQuery)
@@ -19,9 +31,25 @@ def select(selectQuery):
     except Error as e:
         print(e)
 
+# INSERT QUERY
+# insertQuery: Valid sql insert query FORMAT STRING
+# data: tuple
+# return: boolean
 def insert(insertQuery, data):
     try:
         cursor.execute(insertQuery, data)
+        connection.commit()
+        return True
+    except Error as e:
+        print(e)
+        return False
+
+# DELETE QUERY
+# Input: Valid sql delete query string
+# Output: List of tuples first element column names
+def delete(deleteQuery):
+    try:
+        cursor.execute(deleteQuery)
         connection.commit()
     except Error as e:
         print(e)
@@ -41,78 +69,136 @@ def html_table(data):
 
     return table + "</table>"    
 
+# Root
 @app.route('/', methods=["GET", "POST"])
 def root():
-    if request.method == "POST":
+    # Adds route to logged in user using route id
+    if request.method == "POST" and session.get('loggedIn'):
         insert("""
                INSERT INTO user_routes
                (user_id, route_id)
                VALUES (%s, %s)
-               """, (request.form.get('user_id'), request.form.get('route_id')))
+               """, (session.get('id'), request.form.get('route_id')))
         return redirect(url_for('root'))
 
     else:
+        # Print all available routes if search string is in arrival or destination name
         search = request.args.get('search').strip() if request.args.get('search') is not None else ""
-
-        query = ""
-        if search:
-            query = f"""
-            SELECT * FROM view_all_routes
-            WHERE Departure LIKE '%{search}%' OR Arrival LIKE '%{search}%'
-            """
-        else:
-            query= """
+        query = f"""
             SELECT
-                routes.id AS No,
-                departure.location_name AS Departure,
-                arrival.location_name AS Arrival,
+                routes.id AS `Route No.`,
+                departure_locations.location_name AS Departure,
+                arrival_locations.location_name AS Arrival,
                 departure_datetime AS 'Departure Time',
                 arrival_datetime AS 'Arrival Time',
                 price AS Price
             FROM routes
-            JOIN locations AS departure
-                ON routes.departure_id = departure.id
-            JOIN locations AS arrival
-                ON routes.arrival_id = arrival.id;
+            JOIN locations AS departure_locations
+                ON routes.departure_id = departure_locations.id
+            JOIN locations AS arrival_locations
+                ON routes.arrival_id = arrival_locations.id
+            WHERE departure_locations.location_name LIKE '%{search}%' OR arrival_locations.location_name LIKE '%{search}%'
             """
 
         return render_template('root.html', data=html_table(select(query)))
 
-@app.route('/users', methods=['GET', 'POST'])
-def users():
-    if request.method == "POST":
-        insert("""
-               INSERT INTO users(first_name, last_name)
-               VALUES (%s, %s)
-               """, (request.form.get('first_name'), request.form.get('last_name')))
-        return redirect(url_for('users'))
+# Login
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        
+        # Fetch user that matches email
+        # Email field is UNIQUE
+        cursor.execute(f"""
+                        SELECT * FROM users
+                        WHERE email = '{request.form.get("email").strip()}'
+                        """)
 
+        account = cursor.fetchone()
+        
+        # Check given password with stored bcrypt hash string
+        if account and bcrypt.checkpw(request.form.get('password').strip().encode('utf-8'), account[4].encode('utf-8')):
+            session['loggedIn'] = True
+            session['id'] = account[0]
+            session['name'] = account[1] + ' ' + account[2]
+            session['email'] = account[3]
+            return redirect(url_for('root'))
+
+    return render_template('login.html')
+
+# Logout
+@app.route('/logout')
+def logout():
+    # Pop all session variables
+    session.pop('loggedIn', None)
+    session.pop('id', None)
+    session.pop('name', None)
+    session.pop('email', None)
+
+    return redirect(url_for('root'))
+
+# Register
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    # Trying to register with register form
+    if request.method == "POST":
+        # Check if all fields are filled and email is correct format
+        if (request.form.get('first_name').strip() and
+            request.form.get('last_name').strip() and
+            request.form.get('password').strip() and
+            re.fullmatch(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b', request.form.get('email').strip())):
+            insert_success = insert("""
+               INSERT INTO users(first_name, last_name, email, password)
+               VALUES (%s, %s, %s, %s)
+               """, (request.form.get('first_name').strip(),
+                   request.form.get('last_name').strip(),
+                   request.form.get('email').strip(),
+                   bcrypt.hashpw(request.form.get('password').strip().encode('utf-8'), bcrypt.gensalt())))
+        
+            # Redirect to automatic login with credentials if successful insert
+            if insert_success:
+                return redirect(url_for('login'), code=307) 
+
+    return render_template('register.html')
+
+# Home
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    # If trying to access /home without being logged in
+    # Redirect to login page
+    if session.get('loggedIn') is None:
+        return redirect(url_for('login'))
+
+    # Trying to drop route
+    elif request.method == "POST":
+        delete(f"""
+                DELETE FROM user_routes
+                WHERE user_id={session.get('id')} AND route_id = {request.form.get('route_id').strip()}
+                """)
+
+        return redirect(url_for('home'))
+    
     else:
         search = request.args.get('search').strip() if request.args.get('search') is not None else ""
         
-        if search:
-            return render_template('users.html', data=html_table(select(
-            f"""
-            SELECT * 
-            FROM view_all_users            
-            WHERE Name LIKE '%{search}%'
-            """)) + "\n<br>\n" + html_table(select(
+        return render_template('home.html', data=html_table(select(
+            # Get all routes for user with search string inside arrival or departure name
             f"""
             SELECT
-                No,
-                Name,
+                `Route No.`,
+                Departure,
+                Arrival,
+                `Departure Time`,
+                `Arrival Time`,
+                Price
+            FROM view_all_routes            
+            WHERE `User No.`={session.get('id')} AND (Departure LIKE '%{search}%' OR Arrival LIKE '%{search}%')
+             """)) + "\n<br>\n" + html_table(select(
+            # Get sum of all prices of routes for user
+            f"""
+            SELECT
                 SUM(Price) AS Total
-            FROM view_all_users
-            GROUP BY No
-            HAVING Name LIKE '%{search}%'
-            """)))
-
-        else:
-            query = """
-            SELECT
-                id AS No,
-                CONCAT(first_name, ' ', last_name) AS Name
-            FROM users
-            """
-            
-            return render_template('users.html', data=html_table(select(query)))
+            FROM view_all_routes
+            GROUP BY `User No.`
+            HAVING `User No.`={session.get('id')}
+             """)))

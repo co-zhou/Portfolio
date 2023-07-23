@@ -1,0 +1,23 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+</head>
+ 
+<body>
+  <div class="flex-container">
+    <div class="container">
+      <h1>HOME<br>name: {{ session.get('name') }}</h1>
+      <button onclick="window.location.href='/'">Root</button>
+      <button onclick="window.location.href='/logout'">Logout</button>
+      <br>
+      <form action="/home">
+        <input type="text" name="search" placeholder="Search User">
+        <button type="submit">Search</button>
+      </form>
+      {{ data | safe }}
+      <form action="{{ url_for('home') }}" method="POST">
+        <input type="text" name="route_id" placeholder="Route ID">
+        <button type="submit">Drop Route</button>
+      </form>
+    </div>
+  </div>
+</body>

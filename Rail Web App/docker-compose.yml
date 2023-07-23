@@ -1,18 +1,36 @@
 version: '3.8'
 
 services:
+  nginx:
+    build:
+      context: nginx
+    container_name: nginx
+    image: cozhou/rail-nginx:latest
+    ports:
+      - '8000:80'
+    depends_on:
+      app:
+        condition: service_healthy
+
   # Flask Application Service
   app:
     # Flask Application Dockerfile Location
     build:
       context: app
-    command: python3 wsgi.py
-    ports:
+    container_name: app
+    image: cozhou/rail-app:latest
+    command: gunicorn wsgi:app --bind 0.0.0.0:5000 &
+    expose:
       # Flask Application Host Port
-      - '5000:5000'
+      - '5000'
     depends_on:
       init:
         condition: service_completed_successfully
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:5000/
+      interval: 5s
+      timeout: 30s
+      retries: 10
 
 
   # Initialize DB Tables
@@ -20,16 +38,15 @@ services:
     # init Dockerfile Location
     build:
       context: init
+    image: cozhou/rail-init:latest
     depends_on:
       db:
         condition: service_healthy
 
 
-
   db:
     image: mysql:latest
     container_name: mydb
-    restart: always
     environment:
       MYSQL_DATABASE: 'rail'      
       MYSQL_USER: 'user'
@@ -43,7 +60,6 @@ services:
       test: mysqladmin ping -h localhost
       timeout: 5s
       retries: 100
-
 
 volumes:
   mysql-db:

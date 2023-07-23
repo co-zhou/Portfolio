@@ -1,22 +1,33 @@
 <head>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/root.css') }}"> 
 </head>
 
 <body>
   <div class="flex-container">
     <div class="container">
-      <h1>ROOT</h1>
+      <h1>ROOT {% if session.get('loggedIn') %}
+        <br>name: {{ session.get('name') }}
+        {% endif %}
+      </h1>
+      {% if session.get('loggedIn') %}
+      <button onclick="window.location.href='/home'">Home</button>
+      <button onclick="window.location.href='/logout'">Logout</button>
+      {% else %}
+        <button onclick="window.location.href='/login'">Login</button>
+        <button onclick="window.location.href='/register'">Register</button>
+      {% endif %}
       <form action="/">
         <input type"text" name="search" placeholder="Search Route">
         <button type="submit">Search</button>
       </form>
       {{ data | safe }}
-      <br>
+
+      {% if session.get('loggedIn') %}
       <form action="{{ url_for('root') }}" method="POST">
-        <input type="text" name="user_id" placeholder="User ID">
         <input type="text" name="route_id" placeholder="Route ID">
         <button type="submit">Add</button>
       </form>
+      {% endif %}
     </div>
   </div>
 </body>

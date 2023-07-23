@@ -1,5 +1,6 @@
 import random
 import datetime
+import bcrypt
 from faker import Faker
 from mysql.connector import connect, Error
 
@@ -28,14 +29,23 @@ if __name__ == '__main__':
     ## INSERT INTO USERS
     insert_users_query = """
     INSERT INTO users
-    (first_name, last_name)
-    VALUES (%s, %s)
+    (first_name, last_name, email, password)
+    VALUES (%s, %s, %s, %s)
     """
 
     numUsers = 100
     data = []
     for i in range(numUsers):
-        data.append((fake.first_name(), fake.last_name()))
+        first_name = fake.first_name()
+        last_name = fake.last_name()
+        email = first_name + last_name + '@' + fake.free_email_domain()
+        while email in [item[2] for item in data]:
+            first_name = fake.first_name()
+            last_name = fake.last_name()
+            email = first_name + last_name + '@' + fake.free_email_domain()
+        password = bcrypt.hashpw(fake.password().encode('utf-8'), bcrypt.gensalt())
+        
+        data.append( (first_name, last_name, email, password) )
 
     cursor.executemany(insert_users_query, data)
     
