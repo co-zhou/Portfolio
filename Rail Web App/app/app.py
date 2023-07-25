@@ -1,13 +1,17 @@
 # MAIN APP IMPLEMENTATION
 
 from flask import Flask, render_template, request, redirect, url_for, session
+from flask_wtf.csrf import CSRFProtect
 from mysql.connector import connect, Error
+from datetime import timedelta
 import bcrypt
 import re
 
 # Global Flask App Initialization
 app = Flask(__name__)
-app.secret_key = 'secret key'
+app.secret_key = '-=gyr6sfkhw$+mt+yx9x@o&aey)h=fg80k$+4a*#$lsmuf-$-('
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
+csrf = CSRFProtect(app)
 
 # Global MYSQL connection and cursor
 try:
@@ -19,7 +23,6 @@ except Error as e:
     print(e)
 
 cursor = connection.cursor()
-
 
 # SELECT QUERY
 # Input: Valid sql select query string
@@ -202,3 +205,15 @@ def home():
             GROUP BY `User No.`
             HAVING `User No.`={session.get('id')}
              """)))
+
+# Delete Account
+@app.route('/delete-account')
+def delete_account():
+    # Delete user from users table
+    # Cascades to user_routes table
+    delete(f"""
+                DELETE FROM users
+                WHERE id={session.get('id')}
+                """)
+
+    return redirect(url_for('logout'))

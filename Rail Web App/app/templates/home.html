@@ -5,17 +5,18 @@
 <body>
   <div class="flex-container">
     <div class="container">
-      <h1>HOME<br>name: {{ session.get('name') }}</h1>
-      <button onclick="window.location.href='/'">Root</button>
+      <h1>MY ROUTES<br>Profile: {{ session.get('name') }}</h1>
+      <button onclick="window.location.href='/'">Homepage</button>
       <button onclick="window.location.href='/logout'">Logout</button>
       <br>
       <form action="/home">
-        <input type="text" name="search" placeholder="Search User">
+        <input type="text" name="search" placeholder="Search Route">
         <button type="submit">Search</button>
       </form>
       {{ data | safe }}
       <form action="{{ url_for('home') }}" method="POST">
         <input type="text" name="route_id" placeholder="Route ID">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <button type="submit">Drop Route</button>
       </form>
     </div>

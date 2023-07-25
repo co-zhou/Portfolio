@@ -5,13 +5,14 @@
 <body>
   <div class="flex-container">
     <div class="container">
-      <h1>ROOT {% if session.get('loggedIn') %}
-        <br>name: {{ session.get('name') }}
+      <h1>HOMEPAGE {% if session.get('loggedIn') %}
+        <br>Profile: {{ session.get('name') }}
         {% endif %}
       </h1>
       {% if session.get('loggedIn') %}
-      <button onclick="window.location.href='/home'">Home</button>
+      <button onclick="window.location.href='/home'">My Routes</button>
       <button onclick="window.location.href='/logout'">Logout</button>
+      <button onclick="window.confirm('Are you sure you want to delete account?'); window.location.href='/delete-account'">Delete Account</button>
       {% else %}
         <button onclick="window.location.href='/login'">Login</button>
         <button onclick="window.location.href='/register'">Register</button>
@@ -25,7 +26,8 @@
       {% if session.get('loggedIn') %}
       <form action="{{ url_for('root') }}" method="POST">
         <input type="text" name="route_id" placeholder="Route ID">
-        <button type="submit">Add</button>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <button type="submit">Add Route</button>
       </form>
       {% endif %}
     </div>

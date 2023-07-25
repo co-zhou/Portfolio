@@ -31,7 +31,7 @@ CREATE TABLE user_routes (
 	user_id INT NOT NULL,
 	route_id INT NOT NULL,
 	PRIMARY KEY(user_id, route_id),
-	FOREIGN KEY (user_id) REFERENCES users(id),
+	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
 	FOREIGN KEY (route_id) REFERENCES routes(id)
 );
 

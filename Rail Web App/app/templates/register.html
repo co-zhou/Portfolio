@@ -6,13 +6,14 @@
   <div class="flex-container">
     <div class="container">
       <h1>REGISTER</h1>
-      <button onclick="window.location.href='/'">Root</button>
+      <button onclick="window.location.href='/'">Homepage</button>
       <button onclick="window.location.href='/login'">Login</button>
       <form action="{{ url_for('register') }}" method="POST">
         <input type="text" name="first_name" placeholder="First Name">
         <input type="text" name="last_name" placeholder="Last Name">
         <input type="text" name="email" placeholder="Email">
         <input type="text" name="password" placeholder="Password">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <button type="submit">Register</button>
       </form>
     </div>
