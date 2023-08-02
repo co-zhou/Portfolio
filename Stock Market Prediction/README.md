@@ -1,0 +1,2 @@
+Stock market is pulled from yahoo finance and is preproccessed before training the LSTM model. The preprocessing consists of normalizing and reserving the earlier data as training data and the recent data as validation data.
+The data is then cascaded based on the timestep size. The program will automatically save the weights with the lowest validation loss and then predict a number of forecast days.
