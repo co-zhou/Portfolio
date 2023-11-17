@@ -11,7 +11,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 . ~/.nvm/nvm.sh
 nvm install --lts
 
-npx npm-check-updates -u -y
+npx npm-check-updates -u
 npm install
 npm install -g serve
 
