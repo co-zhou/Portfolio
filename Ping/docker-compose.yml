@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  # Nginx Service
+  nginx:
+    build:
+      context: nginx
+    image: cozhou/ping-nginx
+    container_name: nginx
+    command: nginx -g "daemon off;"
+    ports:
+      - '80:80'
+    depends_on:
+      gui:
+        condition: service_healthy
+
+  # Next.js GUI Service
+  gui:
+    build:
+      context: gui
+    image: cozhou/ping-gui
+    container_name: gui
+    command: npm run start
+    ports:
+      - '3000:3000'
+    depends_on:
+      ping:
+        condition: service_healthy
+      server:
+        condition: service_healthy
+    healthcheck:
+      test: curl localhost:3000
+      timeout: 5s
+      retries: 100
+
+  # Ping Service
+  ping:
+    build:
+      context: ping
+    image: cozhou/ping-ping
+    container_name: ping
+    command: node ping.js
+    ports:
+      - '5000:5000'
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ping -c 1 localhost
+      timeout: 5s
+      retries: 100
+
+  # Express Backend Service
+  server:
+    build:
+      context: server
+    image: cozhou/ping-server
+    container_name: server
+    command: node server.js
+    ports:
+      - '8000:8000'
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: curl localhost:8000/api/v1/get-groups
+      timeout: 5s
+      retries: 100
+
+  # MariaDB Service
+  db:
+    build:
+      context: db
+    image: cozhou/ping-mariadb
+    container_name: db
+    ports:
+      - '3306:3306'
+    volumes:
+      #- './init.sql:/docker-entrypoint-initdb.d/init.sql'
+      - './mariadb-data:/var/lib/mysql'
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+    healthcheck:
+      test: mariadb-check -ppassword ping_db
+      timeout: 5s
+      retries: 100
+
+volumes:
+  mariadb-data:
