@@ -16,7 +16,7 @@ const pool = mariadb.createPool({
 
 let intervalId = {};
 let groupId = 0;
-let intervalTime = 2000;
+let intervalTime = 1000;
 
 const timer = async () => {
   let conn;

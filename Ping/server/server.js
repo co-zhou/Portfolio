@@ -74,6 +74,12 @@ app.post('/api/v1/get-devices', async (req, res) => {
 
   const data = await response.json();
 
+  devices.map((device) => {
+    device.uptime = device.recent_time - device.start_time;
+    delete device.start_time;
+    delete device.recent_time;
+  })
+
   res.send({ devices: devices });
 })
 
