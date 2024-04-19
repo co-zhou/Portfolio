@@ -16,7 +16,7 @@ const pool = mariadb.createPool({
 
 let intervalId = {};
 let groupId = 0;
-let intervalTime = 1000;
+let intervalTime = 500;
 
 const timer = async () => {
   let conn;
@@ -63,20 +63,6 @@ app.post('/api/v1/change-group-id', async (req, res) => {
 
   groupId = req.body.groupId;
   res.send({ message: "groupId changed" });
-})
-
-app.post('/api/v1/change-interval-time', async (req, res) => {
-  /*  
-  req.body: {
-    intervalTime: int
-  }
-  */
-
-  clearInterval(intervalId);
-  intervalTime = req.body.intervalTime;
-  timer();
-
-  res.send({ message: "intervalTime changed" });
 })
 
 app.listen(5000, () => {
