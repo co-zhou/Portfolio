@@ -59,7 +59,7 @@ app.post('/api/v1/get-devices', async (req, res) => {
   const devices = req.body.groupId
   ? await queryDB("SELECT * FROM devices WHERE group_id=?", req.body.groupId)
   : null;
-
+  /*
   const response = await fetch('http://ping:5000/api/v1/change-group-id', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -67,13 +67,13 @@ app.post('/api/v1/get-devices', async (req, res) => {
       groupId: req.body.groupId
     })
   });
-
+  
   if (!response.ok) {
     throw new Error('Failed to fetch data');
   }
 
   const data = await response.json();
-
+  */
   devices.map((device) => {
     device.uptime = device.recent_time - device.start_time;
     delete device.start_time;
