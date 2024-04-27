@@ -5,7 +5,7 @@ FROM node:lts
 WORKDIR /server
 
 # install dependencies
-COPY package*.json .
+COPY package.json .
 RUN npm install
 
 # copy project

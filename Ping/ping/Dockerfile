@@ -6,7 +6,7 @@ WORKDIR /ping
 
 # install dependencies
 RUN apt-get update && apt-get install -y iputils-ping
-COPY package*.json .
+COPY package.json .
 RUN npm install
 
 # copy project

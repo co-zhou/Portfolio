@@ -24,24 +24,25 @@ const timer = async () => {
     conn = await pool.getConnection();
     console.log('ping server on');
     //if(!Object.keys(intervalId).length) {
-      intervalId = setInterval(async () => {
-        console.log("ping");
-        const devices = await conn.query("SELECT * FROM devices");
-        devices.forEach(async device => {
-          const time = (await ping.promise.probe(device.ip)).time;
-          if (isNaN(time)) {
-            const query = conn.query("UPDATE devices SET ping=?, start_time=? WHERE id=?", [
-              -1,
-              new Date().toISOString().slice(0, 23).replace('T', ' '),
-              device.id
-            ]);
-          }
+    intervalId = setInterval(async () => {
+      console.log("ping");
+      const devices = await conn.query("SELECT * FROM devices");
+      devices.forEach(async device => {
+        const time = (await ping.promise.probe(device.ip)).time;
+        if (isNaN(time)) {
+          const query = conn.query("UPDATE devices SET ping=?, start_time=? WHERE id=?", [
+            -1,
+            new Date().toISOString().slice(0, 23).replace('T', ' '),
+            device.id
+          ]);
+        } else {
           const query = conn.query("UPDATE devices SET ping=? WHERE id=?", [
             time,
             device.id
           ]);
-        });
-      }, intervalTime);
+        }
+      });
+    }, intervalTime);
     //}
   } catch (err) {
     throw err;
