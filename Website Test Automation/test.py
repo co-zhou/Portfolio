@@ -53,5 +53,36 @@ class MyTestClass(BaseCase):
         self.click(".sw-tab:nth-child(2) .sw-tab__inner__piece")
         self.click(".icon-trash")
         self.click(".sw-action-bar-item:nth-child(2) > .sw-btn")
+
+    def test_products(self):
+        self.login()
+        print("Products")
+        self.click("#md-button-toggle-2")
+        self.switch_to_frame("id-iframe-workspace")
         
+        self.assert_text("All tenants", ".dropdown-three-component__label-text")
+
+    def test_register_products(self):
+        self.login()
+        print("Register Products")
+        self.click("#md-button-toggle-3")
+        self.switch_to_frame("id-iframe-workspace")
         
+        self.assert_text("Register Products", ".register-product__heading")
+
+    def test_download_center(self):
+        self.login()
+        print("Download Center")
+        self.click(".icon-download")
+        self.click("#md-button-toggle-12")
+
+        self.assert_text("Download Center", ".second-level")
+
+    def test_download_center(self):
+        self.login()
+        print("Support")
+        self.click(".icon-phone:nth-child(1)")
+        self.click("#md-button-toggle-19")
+        self.switch_to_frame("id-iframe-workspace")
+
+        self.assert_text("Support", ".mswAppTitle__Wrapper--text")
