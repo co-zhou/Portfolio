@@ -54,6 +54,7 @@ def forecastNDays(n_lookback, n_forecast, model, data):
 
 def candlestickChart(indices, data, up_color, down_color):
     data = np.hstack((indices[:, np.newaxis], data))
+    print(data)
     up = data[data[:, 4] >= data[:, 1]]
     down = data[data[:, 4] < data[:, 1]]
 
@@ -71,8 +72,8 @@ def candlestickChart(indices, data, up_color, down_color):
     plt.xticks(rotation=30, ha='right')
     
 if __name__ == '__main__':
-    timestepSize = 50
-    time = "5y"
+    timestepSize = 10
+    time = "1y"
     batch_size = 32
     scaler = MinMaxScaler(feature_range = (0, 1))
     
