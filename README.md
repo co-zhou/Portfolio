@@ -1,9 +1,7 @@
 # About Me
 <img align="right" width="170" height="220" src="https://user-images.githubusercontent.com/95654612/148268886-b29e96f8-a525-4616-b808-6bfdf072a633.JPEG">
-My experience in computer engineering at University of California, Santa Barbara focused on integrated circuit design and using AI/Machine Learning to solve problems. I have over eight years experience in computer programming mainly in C++, Javascript, and Python. My ability to collaborate with others to complete a large project is seen through the published CK-12 textbooks and my Capstone project. These projects also taught me how to work remotely and how to create a product that ensures quality for the user. These projects had their own editors, APIs, and interfaces, so I was able to learn very quickly and produce results within the first month.
-
-I have a passion for using technology to make a positive impact on the world. Advancing technology is important to solve the biggest threats the world sees today. I also strive to ensure no corners get cut during the design process to ensure maximum quality and reliability.
-
+My experience in computer engineering at University of California, Santa Barbara focused on integrated circuit design and using AI/Machine Learning to solve problems. I have over eight years experience in computer programming mainly in C++, Javascript, and Python. My ability to collaborate with others to complete a large project is seen through the published CK-12 textbooks and my Capstone project. These projects also taught me how to work remotely and how to create a product that ensures quality for the user. These projects had their own editors, APIs, and interfaces, so I was able to learn very quickly and produce results within the first month.<br/><br/>
+I have a passion for using technology to make a positive impact on the world. Advancing technology is important to solve the biggest threats the world sees today. I also strive to ensure no corners get cut during the design process to ensure maximum quality and reliability.<br/><br/>
 If you have any job or research opportunites in hardware or sofware, contact me at coreyzh@gmail.com.
 
 # Math Interactives Internship, CK-12 Foundation
