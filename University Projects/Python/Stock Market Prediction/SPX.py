@@ -14,6 +14,7 @@ from sklearn.preprocessing import MinMaxScaler
 # Return: Dataframe (N rows x 4 columns) with only 'Open', 'High', 'Low', 'Close' columns
 def getSPXData(time):
     data = yf.download("^SPX", period=time).loc[:, ['Open', 'High', 'Low', 'Close']]
+    print(data)
     return data 
 
 # Split 'precentage' of dataset into training set and the rest to validation set
